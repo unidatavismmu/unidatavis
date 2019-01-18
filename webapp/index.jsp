@@ -1,21 +1,22 @@
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
-	<title>University Data Visualisation</title>
+	<title>Website Title</title>
 </head>
 
 <body>
+
+	<!-- Top of page: Login button -->
+	<div class="login">
+		<a href="login.jsp">Login</a>
+	</div>
+		
 	<!-- Website title, navigation and search bar are centered on the page -->
 	<center>
-
-		<!-- Top of page: Login button -->
-		<div class="login">
-			<a href="login.jsp">Login</a>
-		</div>
-
+	
 		<!-- Header includes title -->
 		<div class="header">
-			<h1>University Data Visualisation</h1>
+			<h1>Website Title</h1>
 		</div>
 
 		<!-- Navigation links to different areas of the site -->
