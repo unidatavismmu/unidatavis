@@ -11,6 +11,7 @@ public class Controller {
 		ctx.setResourceBase("webapp");
 		ctx.setContextPath("/");
 		Configure(server);
+		ctx.addServlet("ResultsServlet", "/results");
 		server.setHandler(ctx);
 		server.start();
 		server.join();
