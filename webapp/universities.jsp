@@ -24,14 +24,12 @@
 			<a href="">Home</a>
 			<a href="university.jsp">Universities</a>
 			<a href="course.jsp">Courses</a>
+			<input type="text" placeholder="Search">
 		</div>
 
-		<!-- Main body, large area with search bar -->
-		<div class="search">
-			<form action="/results.jsp">
-				<input type="text" placeholder="Search" name="searchQuery">
-				<input type="submit" value="Search">
-			</form>
+		<!-- Main body, list of universities -->
+		<div class="universities">
+			<!-- TODO: Use MySQL to get a list of all uni's in the database -->
 		</div>
 
 		<!-- Footer containing references and about information -- >

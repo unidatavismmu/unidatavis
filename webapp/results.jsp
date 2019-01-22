@@ -29,6 +29,7 @@
 
 		<!-- Main body, search results -->
 		<div class="results">
+			<!-- TODO: Use mysql to get list of results based on the query: searchQuery variable -->
 		</div>
 
 		<!-- Footer containing references and about information -- >
