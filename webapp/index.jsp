@@ -2,42 +2,49 @@
 <head>
 	<!-- Head defines title and links to CSS -->
 	<title>Website Title</title>
+	<!-- TODO: Link to CSS -->
 </head>
 
 <body>
 
 	<!-- Top of page: Login button -->
+	<!-- TODO: Popup using bootstrap for login -->
 	<div class="login">
-		<a href="login.jsp">Login</a>
+		<a href="">Login</a>
 	</div>
 		
-	<!-- Website title, navigation and search bar are centered on the page -->
+	<!-- Website title, navigation and list of unis are centered on the page -->
 	<center>
 	
 		<!-- Header includes title -->
-		<div class="header">
+		<header>
 			<h1>Website Title</h1>
-		</div>
+		</header>
 
 		<!-- Navigation links to different areas of the site -->
-		<div class="navigation">
-			<a href="">Home</a>
-			<a href="university.jsp">Universities</a>
-			<a href="course.jsp">Courses</a>
-		</div>
+		<nav>
+			<ul>
+				<li><a href="">Home</a></li>
+				<li><a href="university.jsp">Universities</a></li>
+				<li><a href="course.jsp">Courses</a></li>
+				<li><form action="/results.jsp">
+					<input type="text" placeholder="Search" name="searchQuery">
+					<input type="submit" value="Search">
+				</form></li>
+			</ul>
+		</nav>
 
-		<!-- Main body, large area with search bar -->
-		<div class="search">
-			<form action="/results.jsp">
-				<input type="text" placeholder="Search" name="searchQuery">
-				<input type="submit" value="Search">
-			</form>
-		</div>
+		<!-- Main body, large area with uni rankings -->
+		<main>
+
+			<!-- TODO: Use SQL to get a list of uni rankings -->
+
+		</main>
 
 		<!-- Footer containing references and about information -- >
-		<div class="footer">
+		<footer>
 			<p>References go here</p>
-		</div>
+		</footer>
 
 	</center>
 </body>
