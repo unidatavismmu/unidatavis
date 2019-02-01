@@ -2,40 +2,45 @@
 <head>
 	<!-- Head defines title and links to CSS -->
 	<title>Website Title</title>
+	<!-- TODO: Link to CSS -->
 </head>
 
 <body>
-
-	<!-- Top of page: Login button -->
-	<div class="login">
-		<a href="login.jsp">Login</a>
-	</div>
 		
-	<!-- Website title, navigation and search bar are centered on the page -->
+	<!-- Website title, navigation and list of unis are centered on the page -->
 	<center>
 	
 		<!-- Header includes title -->
-		<div class="header">
+		<header>
 			<h1>Website Title</h1>
-		</div>
+		</header>
 
 		<!-- Navigation links to different areas of the site -->
-		<div class="navigation">
-			<a href="">Home</a>
-			<a href="university.jsp">Universities</a>
-			<a href="course.jsp">Courses</a>
-			<input type="text" placeholder="Search">
-		</div>
+		<nav>
+			<ul>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="universities.jsp">Universities</a></li>
+				<li><a href="courses.jsp">Courses</a></li>
+				<li><form action="/results.jsp">
+					<input type="text" placeholder="Search" name="searchQuery">
+					<input type="submit" value="Search">
+				</form></li>
+				<!-- TODO: Popup using bootstrap for login -->
+				<li><a href="">Login</a></li>
+			</ul>
+		</nav>
 
 		<!-- Main body, list of courses -->
-		<div class="courses">
-			<!-- TODO: Use MySQL to get a list of courses -->
-		</div>
+		<main>
+
+			<!-- TODO: Use sql to get list of courses -->
+
+		</main>
 
 		<!-- Footer containing references and about information -- >
-		<div class="footer">
+		<footer>
 			<p>References go here</p>
-		</div>
+		</footer>
 
 	</center>
 </body>

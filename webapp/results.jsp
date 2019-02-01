@@ -6,12 +6,6 @@
 </head>
 
 <body>
-
-	<!-- Top of page: Login button -->
-	<!-- TODO: Popup using bootstrap for login -->
-	<div class="login">
-		<a href="">Login</a>
-	</div>
 		
 	<!-- Website title, navigation and list of unis are centered on the page -->
 	<center>
@@ -24,20 +18,22 @@
 		<!-- Navigation links to different areas of the site -->
 		<nav>
 			<ul>
-				<li><a href="">Home</a></li>
-				<li><a href="university.jsp">Universities</a></li>
-				<li><a href="course.jsp">Courses</a></li>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="universities.jsp">Universities</a></li>
+				<li><a href="courses.jsp">Courses</a></li>
 				<li><form action="/results.jsp">
 					<input type="text" placeholder="Search" name="searchQuery">
 					<input type="submit" value="Search">
 				</form></li>
+				<!-- TODO: Popup using bootstrap for login -->
+				<li><a href="">Login</a></li>
 			</ul>
 		</nav>
 
 		<!-- Main body, area with search results -->
 		<main>
 
-			<!-- TODO: Use search query (GET) to get list of items containing the query from the database. -->
+			<!-- TODO: Use SQL to get a list of results containing the search result. -->
 
 		</main>
 

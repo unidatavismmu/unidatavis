@@ -12,6 +12,8 @@ public class Controller {
 		ctx.setContextPath("/");
 		Configure(server);
 		ctx.addServlet("ResultsServlet", "/results");
+		ctx.addServlet("CoursesServlet", "/courses");
+		ctx.addServlet("UniversitiesServlet", "/universities");
 		server.setHandler(ctx);
 		server.start();
 		server.join();
