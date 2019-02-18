@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 public class UniversitiesServlet extends HttpServlet {
 	
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	throws ServletException, IOException {
+			
 		RequestDispatcher view = req.getRequestDispatcher("universities.jsp");
+		req.setAttribute("name", "Test");
 		view.forward(req, resp);
+		
 	}
 
 }

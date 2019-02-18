@@ -34,7 +34,10 @@
 		<main>
 
 			<!-- TODO: Use SQL to get a list of unis -->
-
+			<p>
+				${name}
+				<%=new java.util.Date()%>
+			</p>
 		</main>
 
 		<!-- Footer containing references and about information -- >
