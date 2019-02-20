@@ -29,18 +29,18 @@
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
 			<li><a href="subjects.jsp">Subjects</a></li>
-			<li><form action="/results.jsp">
-				<input type="text" placeholder="Type here..." name="searchQuery">
-				<input type="submit" value="Search">
-			</form></li>
 		</ul>
 	</nav>
 
-	<!-- Main body, area with list of unis -->
+	<!-- Main body, large area with search bar -->
 	<main>
-		<h1>Universities:</h1>
-			
 
+		<!-- TODO: Use SQL for a search bar -->
+			
+		<form action="/results.jsp">
+			<input type="text" placeholder="Type here..." name="searchQuery">
+			<input type="submit" value="Search">
+		</form>
 			
 
 	</main>

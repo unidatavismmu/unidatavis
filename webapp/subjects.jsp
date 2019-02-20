@@ -38,7 +38,7 @@
 
 	<!-- Main body, area with list of unis -->
 	<main>
-		<h1>Universities:</h1>
+		<h1>Subjects:</h1>
 			
 
 			

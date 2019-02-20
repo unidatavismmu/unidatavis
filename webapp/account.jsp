@@ -36,14 +36,33 @@
 		</ul>
 	</nav>
 
-	<!-- Main body, area with list of unis -->
+	<!-- Main body, area with account details form -->
 	<main>
-		<h1>Universities:</h1>
-			
 
+		<!-- TODO: Use SQL to update account details -->
+			
+		<h1>Account Info</h1>
+		<form action="/updateAccount.jsp">
+			First Name<input type="text" placeholder="" name="firstName">
+			Last Name<input type="text" placeholder="" name="lastName">
+			Email<input type="text" placeholder="" name="email">
+			Telephone<input type="text" placeholder="" name="telephone">
+			Company Name<input type="text" placeholder="" name="companyName">
+			<hr>
+			<p>To save these settings, please enter your password</p>
+			Password<input type="text" placeholder="" name="password">
+			<input type="submit" value="Save Settings">
+		</form>
 			
 
 	</main>
+
+	<!-- Aside with account details -->
+	<article>
+		<h1>Username</h1>
+		<a href="accountInfo">Account Info</a>
+		<a href="savedUnis">Saved Unis</a>
+	</article>
 
 	<!-- Footer containing references and about information -- >
 	<footer>
