@@ -19,7 +19,7 @@ public class UniversityDAO {
 		}
 		
 		try {
-			String url = "jdbc:sqlite:universities.sqlite.db";
+			String url = "jdbc:sqlite:universities.db";
 			c = DriverManager.getConnection(url);
 			return c;
 		} catch (SQLException e) {
@@ -29,13 +29,11 @@ public class UniversityDAO {
     }
 
 	public static ArrayList<University> getAll() throws SQLException {
-		System.out.println("TEST 1");
 		Connection c = null;
 		Statement s = null;
 		ResultSet rs = null;
 		String query = "SELECT * FROM Universities";
 		ArrayList<University> universities = new ArrayList<University>();
-		System.out.println("TEST 2: " + query);
 		try {
 			c = getConnection();
 			s = c.createStatement();
@@ -45,11 +43,8 @@ public class UniversityDAO {
 				University uni = new University(rs.getInt("University ID"), rs.getInt("Rank"), rs.getString("University Name"),
 						rs.getInt("Entry Standards"), rs.getFloat("Student Satisfaction"), rs.getFloat("Research Quality"), rs.getFloat("Research Intensity"),
 						rs.getFloat("Graduate Prospects"), rs.getFloat("Student-Staff Ratio"), rs.getFloat("Academic Services Spend"),
-						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Complection"),
+						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Completion"),
 						rs.getInt("Overall Score"));
-				
-				System.out.println("TEST 3:" + uni.getUniversity_name());
-
 								
 				universities.add(uni);
 			}

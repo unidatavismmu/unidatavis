@@ -27,7 +27,7 @@ public class University {
 		this.entry_standards = entry_standards;
 		this.student_satisfaction = student_satisfaction;
 		this.research_quality = research_quality;
-		this.setResearch_intensity(research_intensity);
+		this.research_intensity = research_intensity;
 		this.graduate_prospects = graduate_prospects;
 		this.student_staff_ratio = student_staff_ratio;
 		this.academic_services_spend = academic_services_spend;
@@ -148,5 +148,6 @@ public class University {
 	public void setResearch_intensity(float research_intensity) {
 		this.research_intensity = research_intensity;
 	}
+	
 
 }

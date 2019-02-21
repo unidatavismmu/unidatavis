@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList,models.University" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
@@ -39,9 +40,19 @@
 	<!-- Main body, area with list of unis -->
 	<main>
 		<h1>Universities:</h1>
-			
-
-			
+		
+		<%
+		ArrayList<University> uniList = new ArrayList<University>();
+		uniList = models.UniversityDAO.getAll();
+		%>
+		<%
+		for (University u : uniList) {
+		%>
+		<br>
+		<%
+			out.println(u.getUniversity_name());
+		}
+		%>
 
 	</main>
 
