@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class UniversityDAO {
+public class DAO {
 	
 	private static Connection getConnection() {
 		Connection c = null;
@@ -28,7 +28,7 @@ public class UniversityDAO {
 		return c;
     }
 
-	public static ArrayList<University> getAll() throws SQLException {
+	public static ArrayList<University> getAllUniversities() throws SQLException {
 		Connection c = null;
 		Statement s = null;
 		ResultSet rs = null;
@@ -66,5 +66,45 @@ public class UniversityDAO {
 		}
 
 		return universities;
+	 }
+	
+	public static ArrayList<University> getAllSubjects() throws SQLException {
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM Subjects ORDER BY subject_name ASC";
+		System.out.println(query);
+		ArrayList<University> subjects = new ArrayList<University>();
+		try {
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			while(rs.next()) {	
+				University uni = new University(rs.getInt("university_id"), rs.getInt("rank"), rs.getString("university_name"),
+						rs.getInt("entry_standards"), rs.getFloat("student_satisfaction"), rs.getFloat("research_quality"), rs.getFloat("research_intensity"),
+						rs.getFloat("graduate_prospects"), rs.getFloat("student_staff_ratio"), rs.getFloat("academic_services_spend"),
+						rs.getInt("facilities_spend"), rs.getFloat("good_honours"), rs.getFloat("degree_completion"),
+						rs.getInt("overall_score"));
+								
+				subjects.add(uni);
+				System.out.println(uni.getUniversity_name());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		return subjects;
 	 }
 }
