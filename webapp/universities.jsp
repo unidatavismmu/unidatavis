@@ -43,7 +43,7 @@
 		
 		<%
 			ArrayList<University> uniList = new ArrayList<University>();
-			uniList = models.UniversityDAO.getAllUniversities();
+			uniList = models.DAO.getAllUniversities();
 		%>
 		<%
 			for (University u : uniList) {
