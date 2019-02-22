@@ -32,7 +32,8 @@ public class UniversityDAO {
 		Connection c = null;
 		Statement s = null;
 		ResultSet rs = null;
-		String query = "SELECT * FROM Universities";
+		String query = "SELECT * FROM Universities ORDER BY university_name ASC";
+		System.out.println(query);
 		ArrayList<University> universities = new ArrayList<University>();
 		try {
 			c = getConnection();
@@ -40,13 +41,14 @@ public class UniversityDAO {
 			rs = s.executeQuery(query);
 			
 			while(rs.next()) {	
-				University uni = new University(rs.getInt("University ID"), rs.getInt("Rank"), rs.getString("University Name"),
-						rs.getInt("Entry Standards"), rs.getFloat("Student Satisfaction"), rs.getFloat("Research Quality"), rs.getFloat("Research Intensity"),
-						rs.getFloat("Graduate Prospects"), rs.getFloat("Student-Staff Ratio"), rs.getFloat("Academic Services Spend"),
-						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Completion"),
-						rs.getInt("Overall Score"));
+				University uni = new University(rs.getInt("university_id"), rs.getInt("rank"), rs.getString("university_name"),
+						rs.getInt("entry_standards"), rs.getFloat("student_satisfaction"), rs.getFloat("research_quality"), rs.getFloat("research_intensity"),
+						rs.getFloat("graduate_prospects"), rs.getFloat("student_staff_ratio"), rs.getFloat("academic_services_spend"),
+						rs.getInt("facilities_spend"), rs.getFloat("good_honours"), rs.getFloat("degree_completion"),
+						rs.getInt("overall_score"));
 								
 				universities.add(uni);
+				System.out.println(uni.getUniversity_name());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

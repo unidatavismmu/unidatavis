@@ -42,11 +42,11 @@
 		<h1>Universities:</h1>
 		
 		<%
-		ArrayList<University> uniList = new ArrayList<University>();
-		uniList = models.UniversityDAO.getAll();
+			ArrayList<University> uniList = new ArrayList<University>();
+			uniList = models.UniversityDAO.getAll();
 		%>
 		<%
-		for (University u : uniList) {
+			for (University u : uniList) {
 		%>
 		<br>
 		<%
