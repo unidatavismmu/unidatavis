@@ -1,7 +1,14 @@
 package models;
 
+/**
+ * Model class for the Universities.
+ * 
+ * @version 1.0
+ * @author unidatavis
+ */
 public class University {
 
+	// Defines private variables.
 	private int university_id;
 	private int rank;
 	private String university_name;
@@ -17,6 +24,7 @@ public class University {
 	private float degree_completion;
 	private int overall_score;
 	
+	// Constructor sets private variables.
 	public University(int university_id, int rank, String university_name,
 			int entry_standards, float student_satisfaction, float research_quality, float research_intensity,
 			float graduate_prospects, float student_staff_ratio, float academic_services_spend,
@@ -37,6 +45,7 @@ public class University {
 		this.overall_score = overall_score;
 	}
 	
+	// Getters and setters for each variable.
 	public int getUniversity_id() {
 		return university_id;
 	}
@@ -149,5 +158,4 @@ public class University {
 		this.research_intensity = research_intensity;
 	}
 	
-
 }

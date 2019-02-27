@@ -41,7 +41,7 @@
 	<main>
 
 		<%
-		String searchQuery = request.getParameter("searchQuery");
+			String searchQuery = request.getParameter("searchQuery");
     	%>
 			<!-- TODO: get list of unis based on search results -->
 		<h2>Search Results:
