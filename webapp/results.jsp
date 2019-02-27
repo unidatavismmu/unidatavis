@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList,models.University" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
@@ -39,9 +40,29 @@
 	<!-- Main body, area with list of unis -->
 	<main>
 
+		<%
+		String searchQuery = request.getParameter("searchQuery");
+    	%>
 			<!-- TODO: get list of unis based on search results -->
+		<h2>Search Results:
 
+			<%
+				out.println(searchQuery);
+			%></h2>
 			
+			<%
+				ArrayList<University> uniList = new ArrayList<University>();
+				uniList = models.DAO.searchUniversities(searchQuery);
+			%>
+			<%
+				for (University u : uniList) {
+			%>
+			<br>
+			<%
+				out.println(u.getUniversity_name());
+			}
+			%>
+				
 
 	</main>
 
