@@ -53,15 +53,19 @@
 			<%
 				ArrayList<University> uniList = new ArrayList<University>();
 				uniList = models.DAO.searchUniversities(searchQuery);
+				String uniName;
 			%>
 			<%
 				for (University u : uniList) {
+				uniName = u.getUniversity_name();
 			%>
 			<br>
+			<a href="universities/<%out.println(uniName.toLowerCase());%>.jsp">
 			<%
-				out.println(u.getUniversity_name());
+				out.println(uniName);
 			}
 			%>
+			</a>
 				
 
 	</main>

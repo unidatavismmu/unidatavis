@@ -1,10 +1,9 @@
-<%@ page import="java.util.ArrayList,models.University" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
 	<title>Title</title>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="../css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -37,26 +36,12 @@
 		</ul>
 	</nav>
 
-	<!-- Main body, area with list of unis -->
+	<!-- Main body -->
 	<main>
-		<h1>Universities:</h1>
-		
-		<%
-			ArrayList<University> uniList = new ArrayList<University>();
-			uniList = models.DAO.getAllUniversities();
-			String uniName;
-		%>
-		<%
-			for (University u : uniList) {
-			uniName = u.getUniversity_name();
-		%>
-		<br>
-		<a href="universities/<%out.println(uniName.toLowerCase());%>.jsp">
-		<%
-			out.println(uniName);
-		}
-		%>
-		</a>
+			<h1>Manchester</h1>
+			<p>General uni stats/charts go here?</p>
+			<p>Then list of courses available at uni?</p>
+			
 
 	</main>
 
