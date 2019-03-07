@@ -33,7 +33,7 @@ public class DAO {
 		
 		try {
 			// Sets the URL of the database and connects.
-			String url = "jdbc:sqlite:universities.db";
+			String url = "jdbc:sqlite:database.db";
 			c = DriverManager.getConnection(url);
 			return c;
 		} catch (SQLException e) {
@@ -55,7 +55,7 @@ public class DAO {
 		ResultSet rs = null;
 		
 		// Query to be run. Printed for debugging.
-		String query = "SELECT * FROM Universities ORDER BY university_name ASC";
+		String query = "SELECT * FROM Universities ORDER BY \"University Name\" ASC";
 		System.out.println(query);
 		
 		// Define array list to store all universities.
@@ -69,11 +69,11 @@ public class DAO {
 			
 			// Loops through all rows in the result set and creates a new university object with all the data.
 			while(rs.next()) {	
-				University uni = new University(rs.getInt("university_id"), rs.getInt("rank"), rs.getString("university_name"),
-						rs.getInt("entry_standards"), rs.getFloat("student_satisfaction"), rs.getFloat("research_quality"), rs.getFloat("research_intensity"),
-						rs.getFloat("graduate_prospects"), rs.getFloat("student_staff_ratio"), rs.getFloat("academic_services_spend"),
-						rs.getInt("facilities_spend"), rs.getFloat("good_honours"), rs.getFloat("degree_completion"),
-						rs.getInt("overall_score"));
+				University uni = new University(rs.getInt("University ID"), rs.getInt("Rank"), rs.getString("University Name"),
+						rs.getInt("Entry Standards"), rs.getFloat("Student Satisfaction"), rs.getFloat("Research Quality"), rs.getFloat("Research Intensity"),
+						rs.getFloat("Graduate Prospects"), rs.getFloat("Student-Staff Ratio"), rs.getFloat("Academic Services Spend"),
+						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Completion"),
+						rs.getInt("Overall Score"));
 						
 				// Adds the university to the array and prints the name for debugging.
 				universities.add(uni);
@@ -111,7 +111,7 @@ public class DAO {
 		ResultSet rs = null;
 		
 		// Query to be run. Printed for debugging.
-		String query = "SELECT * FROM Universities WHERE university_name LIKE '%"+universityName+"%' ORDER BY university_name ASC";
+		String query = "SELECT * FROM Universities WHERE \"University Name\" LIKE '%"+universityName+"%' ORDER BY \"University Name\" ASC";
 		System.out.println(query);
 		
 		// Define array list to store all universities.
@@ -125,11 +125,11 @@ public class DAO {
 			
 			// Loops through all rows in the result set and creates a new university object with all the data.
 			while(rs.next()) {	
-				University uni = new University(rs.getInt("university_id"), rs.getInt("rank"), rs.getString("university_name"),
-						rs.getInt("entry_standards"), rs.getFloat("student_satisfaction"), rs.getFloat("research_quality"), rs.getFloat("research_intensity"),
-						rs.getFloat("graduate_prospects"), rs.getFloat("student_staff_ratio"), rs.getFloat("academic_services_spend"),
-						rs.getInt("facilities_spend"), rs.getFloat("good_honours"), rs.getFloat("degree_completion"),
-						rs.getInt("overall_score"));
+				University uni = new University(rs.getInt("University ID"), rs.getInt("Rank"), rs.getString("University Name"),
+						rs.getInt("Entry Standards"), rs.getFloat("Student Satisfaction"), rs.getFloat("Research Quality"), rs.getFloat("Research Intensity"),
+						rs.getFloat("Graduate Prospects"), rs.getFloat("Student-Staff Ratio"), rs.getFloat("Academic Services Spend"),
+						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Completion"),
+						rs.getInt("Overall Score"));
 				
 				// Adds the university to the array and prints the name for debugging.	
 				universities.add(uni);
