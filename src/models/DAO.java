@@ -154,4 +154,105 @@ public class DAO {
 		// Returns final list of university objects.
 		return universities;
 	 }
+	
+	/**
+	 * Method for returning all course names.
+	 * 
+	 * @return Array of all course names..
+	 * @throws SQLException to catch query failure
+	 */
+	public static ArrayList<String> getAllCourseNames() throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name !='Universities' AND name != 'sqlite_sequence'";
+		System.out.println(query);
+		
+		ArrayList<String> courseNames = new ArrayList<String>();
+				
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all table names and adds them to the array.
+			while(rs.next()) {	
+				courseNames.add(rs.getString("name"));
+				System.out.println(rs.getString("name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Prints final array.
+		return courseNames;
+
+	 }
+	
+	/**
+	 * Method for returning all universities using a university name as a condition.
+	 * 
+	 * @return Array of all universities that contain the search query.
+	 * @throws SQLException to catch query failure
+	 */
+	public static ArrayList<String> searchCourses(String courseName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name LIKE '%"+courseName+"%' AND name !='Universities' AND name != 'sqlite_sequence'";
+		System.out.println(query);
+		
+		// Define array list to store all universities.
+		ArrayList<String> courseNames = new ArrayList<String>();
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				courseNames.add(rs.getString("name"));
+				System.out.println(rs.getString("name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return courseNames;
+	 }
+	
 }

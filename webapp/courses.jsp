@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList,models.University" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
@@ -38,10 +39,24 @@
 
 	<!-- Main body, area with list of unis -->
 	<main>
-		<h1>Subjects:</h1>
-			
-
-			
+		<h1>Courses:</h1>
+		
+		<%
+			ArrayList<String> courseList = new ArrayList<String>();
+			courseList = models.DAO.getAllCourseNames();
+			String courseName;
+		%>
+		<%
+			for (int i=0;i<courseList.size();i++) {
+			courseName = courseList.get(i);
+		%>
+		<br>
+		<a href="universities/<%out.println(courseName.toLowerCase());%>.jsp">
+		<%
+			out.println(courseName);
+		}
+		%>
+		</a>
 
 	</main>
 

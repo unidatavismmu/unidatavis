@@ -50,6 +50,7 @@
 				out.println(searchQuery);
 			%></h2>
 			
+			<h3>Universities</h3>
 			<%
 				ArrayList<University> uniList = new ArrayList<University>();
 				uniList = models.DAO.searchUniversities(searchQuery);
@@ -62,7 +63,33 @@
 			<br>
 			<a href="universities/<%out.println(uniName.toLowerCase());%>.jsp">
 			<%
-				out.println(uniName);
+				if (uniList.size() == 0) {
+					out.println("No universities found.");
+				} else {
+					out.println(uniName);
+				}
+			}
+			%>
+			</a>
+
+			<h3>Courses</h3>
+			<%
+			ArrayList<String> courseList = new ArrayList<String>();
+			courseList = models.DAO.searchCourses(searchQuery);
+			String courseName;
+			%>
+			<%
+				for (int i=0;i<courseList.size();i++) {
+				courseName = courseList.get(i);
+			%>
+			<br>
+			<a href="universities/<%out.println(courseName.toLowerCase());%>.jsp">
+			<%
+				if (courseList.size() == 0) {
+					out.println("No courses found.");
+				} else {
+					out.println(courseName);
+				}
 			}
 			%>
 			</a>

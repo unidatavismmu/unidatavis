@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Class to manage the universities page.
+ * Class to manage the courses page.
  * 
  * @version 1.0
  * @author unidatavis
  */
-public class UniversitiesServlet extends HttpServlet {
+public class CoursesServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -30,8 +29,7 @@ public class UniversitiesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	throws ServletException, IOException { 
 		// Sets the URL for the results page and forwards the request and response to the view (JSP page).
-		RequestDispatcher view = req.getRequestDispatcher("universities.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("courses.jsp");
 		view.forward(req, resp);
 	}
-
 }
