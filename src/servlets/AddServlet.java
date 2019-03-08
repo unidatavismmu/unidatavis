@@ -1,16 +1,18 @@
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import models.DAO;
 
 public class AddServlet extends HttpServlet {
 	// to do - user authentication
@@ -46,7 +48,7 @@ public class AddServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/jsp/forbidden.jsp");
 			view.forward(request, response);
 		} else {
-			VehicleDAO dao = new VehicleDAO();
+			DAO dao = new DAO();
 
 			ArrayList<String> errors = new ArrayList<String>();
 			HashMap<String, String> values = new HashMap<String, String>();

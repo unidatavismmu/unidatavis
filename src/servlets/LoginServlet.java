@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import models.UniDAO;
+import models.DAO;
 
 @SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		String user = null;
 		String uname = request.getParameter("username");
 		String password = request.getParameter("password");
-		UniDAO dao = new UniDAO();
+		DAO dao = new DAO();
 		try {
 			user = dao.getUser(uname, password);
 		} catch (SQLException e) {
