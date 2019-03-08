@@ -41,6 +41,43 @@ public class DAO {
 		}
 		return c;
     }
+	
+	
+	public String getUser(String uname, String password) throws SQLException {
+
+		String userName = null;
+		Connection getConnection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+
+		String query = "SELECT * FROM users WHERE username = ? AND password = ?;";
+
+		try {
+			getConnection = getConnection();
+			statement = getConnection.prepareStatement(query);
+			statement.setString(1, uname);
+			statement.setString(2, password);
+			System.out.println("DBQuery: " + query);
+			result = statement.executeQuery();
+
+			while (result.next()) {
+
+				userName = result.getString("userName");
+			}
+		} finally {
+			if (result != null) {
+				result.close();
+			}
+			if (statement != null) {
+				statement.close();
+			}
+			if (getConnection != null) {
+				getConnection.close();
+			}
+		}
+		return userName;
+	}
+
 
 	/**
 	 * Method returns all universities in the database with no conditions.
