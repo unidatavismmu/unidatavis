@@ -1,6 +1,5 @@
 package servlets;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -11,24 +10,15 @@ import javax.servlet.http.HttpSession;
 
 import models.DAO;
 
-@SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
-
-		PrintWriter out = response.getWriter();
-		out.println("<html><body>");
-		out.println("<h1>Log in </h1>");
-		out.println("<form action=\"Login\" method=\"post\" >");
-		out.println("Enter username: <input type=\"text\" name=\"username\"> <br>");
-		out.println(" Enter password: <input type=\"password\" name=\"password\"> <br>");
-		out.println("<input type=\"submit\" value=\"Login\">");
-		out.println("</form>");
-		out.println("<a href=\"http://localhost:8080/\">home</a>");
-		out.println("</body></html>");
 
 	}
 
@@ -41,7 +31,6 @@ public class LoginServlet extends HttpServlet {
 		try {
 			user = dao.getUser(uname, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

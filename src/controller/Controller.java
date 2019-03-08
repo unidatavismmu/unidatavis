@@ -30,10 +30,12 @@ public class Controller {
 			Configure(server); 
 			
 			// Adds servlets used on the website.
+			ctx.addServlet("LoginServlet", "/login");
 			ctx.addServlet("ResultsServlet", "/results");
 			ctx.addServlet("UniversitiesServlet", "/universities");
 			ctx.addServlet("CoursesServlet", "/courses");
-			
+			ctx.addServlet("RegisterServlet", "/register");
+
 			// Sets the handler and starts the server.
 			server.setHandler(ctx); 
 			server.start();

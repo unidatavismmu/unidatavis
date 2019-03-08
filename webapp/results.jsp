@@ -14,14 +14,8 @@
 	<!-- Header includes title -->
 	<header>
 		<h1>Title</h1>
-		<p><a href="createaccount.jsp">Create an account</a></p>
-		<div id="loginForm">
-			<form action="/processLogin.jsp">
-				Username<input type="text" placeholder="" name="username">
-				Password<input type="text" placeholder="" name="password">
-				<input type="submit" value="Login">
-			</form>
-		</div>
+		<p><a href="register.jsp">Register</a></p>
+		<p><a href="login.jsp">Login</a></p>
 	</header>
 
 	<!-- Navigation links to different areas of the site -->
