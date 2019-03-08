@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import models.DAO;
 
 public class RegisterServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -25,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Object loggedin = session.getAttribute("loggedin");
 		if (loggedin == null) {
-			System.out.println("Not loggedin");
+			System.out.println("Not logged in");
 			response.setContentType("text/html");
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			RequestDispatcher view = request.getRequestDispatcher("/forbidden.jsp");
@@ -38,6 +39,7 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Object loggedin = session.getAttribute("loggedin");
@@ -76,23 +78,19 @@ public class RegisterServlet extends HttpServlet {
 				try {
 					created = dao.insertUser(username,password);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					created = false;
 				}
 
 				if (created) {
-					// Dashboard
-					System.out.println("Sucess");
-					response.sendRedirect("http://localhost:8080/");
+					System.out.println("Success");
+					response.sendRedirect("../");
 				} else {
 					System.out.println("Fail");
 					doGet(request, response);
 				}
 			}
 		}
-//		System.out.println(make);
-//		//vehicle.setMake(make);
 
 	}
 }

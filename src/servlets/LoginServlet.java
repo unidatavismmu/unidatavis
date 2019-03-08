@@ -15,21 +15,22 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
-
+		System.out.println("GET");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("POST");
 		String user = null;
 		String uname = request.getParameter("username");
 		String password = request.getParameter("password");
 		DAO dao = new DAO();
 		try {
 			user = dao.getUser(uname, password);
+			System.out.println(user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
