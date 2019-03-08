@@ -254,5 +254,4 @@ public class DAO {
 		// Returns final list of university objects.
 		return courseNames;
 	 }
-	
 }

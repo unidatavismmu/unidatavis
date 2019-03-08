@@ -29,7 +29,7 @@
 		<ul>
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
-			<li><a href="subjects.jsp">Subjects</a></li>
+			<li><a href="courses.jsp">Courses</a></li>
 			<li><form action="/results.jsp">
 				<input type="text" placeholder="Type here..." name="searchQuery">
 				<input type="submit" value="Search">

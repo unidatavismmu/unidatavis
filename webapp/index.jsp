@@ -28,7 +28,7 @@
 		<ul>
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
-			<li><a href="subjects.jsp">Subjects</a></li>
+			<li><a href="courses.jsp">Courses</a></li>
 		</ul>
 	</nav>
 

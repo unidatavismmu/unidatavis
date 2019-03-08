@@ -32,6 +32,7 @@ public class Controller {
 			// Adds servlets used on the website.
 			ctx.addServlet("ResultsServlet", "/results");
 			ctx.addServlet("UniversitiesServlet", "/universities");
+			ctx.addServlet("CoursesServlet", "/courses");
 			
 			// Sets the handler and starts the server.
 			server.setHandler(ctx); 
