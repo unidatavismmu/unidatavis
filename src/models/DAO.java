@@ -262,7 +262,7 @@ public class DAO {
 		ResultSet rs = null;
 		
 		// Query to be run. Printed for debugging.
-		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name !='Universities' AND name != 'sqlite_sequence'";
+		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name !='Universities' AND name != 'sqlite_sequence' AND name != 'Users'";
 		System.out.println(query);
 		
 		ArrayList<String> courseNames = new ArrayList<String>();
@@ -312,7 +312,7 @@ public class DAO {
 		ResultSet rs = null;
 		
 		// Query to be run. Printed for debugging.
-		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name LIKE '%"+courseName+"%' AND name !='Universities' AND name != 'sqlite_sequence'";
+		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name LIKE '%"+courseName+"%' AND name !='Universities' AND name != 'sqlite_sequence' AND name != 'Users'";
 		System.out.println(query);
 		
 		// Define array list to store all universities.
@@ -348,4 +348,45 @@ public class DAO {
 		// Returns final list of university objects.
 		return courseNames;
 	 }
+	
+	public static ArrayList<String> getAllCoursesOfferedByUni(int uniID) throws SQLException {
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+
+		ArrayList<String> courseNames = new ArrayList<String>();
+		String courseName;
+		
+		for (int i=0;i<(getAllCourseNames().size())-3;i++) {
+			courseName = getAllCourseNames().get(i);
+		
+			String query = "SELECT * FROM \"" + courseName + "\" WHERE \"University ID\"= " + uniID;
+	
+			try {
+				c = getConnection();
+				s = c.createStatement();
+				System.out.println("Query: " + query);
+				rs = s.executeQuery(query);
+	
+				while (rs.next()) {
+					courseNames.add(courseName);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+		}
+		return courseNames;
+	}
+	
 }

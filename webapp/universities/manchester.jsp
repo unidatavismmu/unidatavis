@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList,models.University" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
@@ -38,9 +39,19 @@
 
 	<!-- Main body -->
 	<main>
-			<h1>Manchester</h1>
-			<p>General uni stats/charts go here?</p>
-			<p>Then list of courses available at uni?</p>
+		<h1>List of courses offered:</h1>
+			<%
+			ArrayList<String> courseNames = new ArrayList<String>();
+			courseNames = models.DAO.getAllCoursesOfferedByUni(18);
+			String courseName;
+			for (int i=0;i<courseNames.size();i++) {
+				courseName = courseNames.get(i);
+			%>
+			<br>
+			<%
+				out.println(courseName);
+			}
+			%>
 			
 
 	</main>
