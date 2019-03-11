@@ -36,34 +36,18 @@
 	<main>
 		<%
 			String uniName = request.getParameter("uniName");
+			String uniID = request.getParameter("uniID");
+			String newString = uniID.replaceAll("\\s+","");
+			int uid = Integer.parseInt(newString);			
+			String courseName = request.getParameter("courseName");
+
 		%>
-		<h1><%out.println(uniName);%></h1>
+		<h1><%out.println(courseName + " at " + uniName);%></h1>
 
 		<br>
 
-		<h2>List of courses offered:</h2>
-			<%
-
-				String uniID = request.getParameter("uniID");
-				String newString = uniID.replaceAll("\\s+","");
-				int uid = Integer.parseInt(newString);
-
-				ArrayList<String> courseNames = new ArrayList<String>();
-				courseNames = models.DAO.getAllCoursesOfferedByUni(uid);
-				String courseName;
-
-				for (int i=0;i<courseNames.size();i++) {
-					courseName = courseNames.get(i);
-			%>
-					<form action="course-at-uni.jsp" method="POST">
-						<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
-						<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
-						<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
-					  	<button type="submit"><% out.println(courseName); %></button>
-				  	</form>
-			<%
-				}
-			%>
+		<h2>Statistics:</h2>
+			
 			
 
 	</main>
