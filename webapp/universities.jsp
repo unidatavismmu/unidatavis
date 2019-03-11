@@ -39,18 +39,24 @@
 			ArrayList<University> uniList = new ArrayList<University>();
 			uniList = models.DAO.getAllUniversities();
 			String uniName;
+			int uniID;
 		%>
 		<%
 			for (University u : uniList) {
-			uniName = u.getUniversity_name();
+				uniName = u.getUniversity_name();
+				uniID = u.getUniversity_id();
+				System.out.println(uniID);
+
 		%>
-		<br>
-		<a href="universities/<%out.println(uniName.toLowerCase());%>.jsp">
+				<form action="university.jsp" method="POST">
+				<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
+				<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
+			  	<button type="submit"><%out.println(uniName);%></button>
+			  	</form>
 		<%
-			out.println(uniName);
-		}
+
+			}
 		%>
-		</a>
 
 	</main>
 

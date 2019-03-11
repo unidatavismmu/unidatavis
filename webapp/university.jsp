@@ -1,10 +1,10 @@
-<%@ page import="java.util.ArrayList,models.University" %>
+<%@ page import="java.util.ArrayList,models.University,java.io.InputStreamReader,java.io.BufferedReader" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
 	<title>Title</title>
-	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="../css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -14,14 +14,8 @@
 	<!-- Header includes title -->
 	<header>
 		<h1>Title</h1>
-		<p><a href="createaccount.jsp">Create an account</a></p>
-		<div id="loginForm">
-			<form action="/processLogin.jsp">
-				Username<input type="text" placeholder="" name="username">
-				Password<input type="text" placeholder="" name="password">
-				<input type="submit" value="Login">
-			</form>
-		</div>
+		<p><a href="register.jsp">Register</a></p>
+		<p><a href="login.jsp">Login</a></p>
 	</header>
 
 	<!-- Navigation links to different areas of the site -->
@@ -29,7 +23,7 @@
 		<ul>
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
-			<li><a href="subjects.jsp">Subjects</a></li>
+			<li><a href="courses.jsp">Courses</a></li>
 			<li><form action="/results.jsp">
 				<input type="text" placeholder="Type here..." name="searchQuery">
 				<input type="submit" value="Search">
@@ -37,13 +31,23 @@
 		</ul>
 	</nav>
 
+
 	<!-- Main body -->
 	<main>
-		<h1>List of courses offered:</h1>
+		<%
+			String uniName = request.getParameter("uniName");
+		%>
+		<h1>List of courses offered: <%out.println(uniName);%></h1>
 			<%
+
+			String uniID = request.getParameter("uniID");
+			String newString = uniID.replaceAll("\\s+","");
+			int uid = Integer.parseInt(newString);
+
 			ArrayList<String> courseNames = new ArrayList<String>();
-			courseNames = models.DAO.getAllCoursesOfferedByUni(18);
+			courseNames = models.DAO.getAllCoursesOfferedByUni(uid);
 			String courseName;
+
 			for (int i=0;i<courseNames.size();i++) {
 				courseName = courseNames.get(i);
 			%>
