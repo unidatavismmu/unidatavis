@@ -1,5 +1,9 @@
 <html>
 <head>
+	<!-- Head defines title and links to CSS -->
+	<title>Title</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<h1>Register</h1>

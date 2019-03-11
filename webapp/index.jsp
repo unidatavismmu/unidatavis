@@ -8,13 +8,22 @@
 
 <body>
 		
-	<!-- Website title, navigation and search bar are centered on the page -->
-	
 	<!-- Header includes title -->
 	<header>
 		<h1>Title</h1>
-		<p><a href="register.jsp">Register</a></p>
-		<p><a href="login.jsp">Login</a></p>
+		<% 
+		//if (session.getAttribute("loggedin").equals(true) || ) {
+		%>
+			<p><a href="account.jsp">Account</a></p>
+			<p><a href="logout">Logout</a></p>
+		<%
+		//} else {
+		%>
+			<p><a href="register.jsp">Register</a></p>
+			<p><a href="login.jsp">Login</a></p>
+		<%
+		//}
+		%>
 	</header>
 
 	<!-- Navigation links to different areas of the site -->

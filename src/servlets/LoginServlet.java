@@ -18,15 +18,16 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
-		System.out.println("GET");
+		System.out.println("Login: GET REQUEST");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("POST");
+		System.out.println("Login: POST REQUEST");
 		String user = null;
 		String uname = request.getParameter("username");
 		String password = request.getParameter("password");
+		
 		DAO dao = new DAO();
 		try {
 			user = dao.getUser(uname, password);
@@ -36,13 +37,13 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		if (user != null) {
-			System.out.println("Sucess");
+			System.out.println("Logged in");
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedin", true);
 			session.setAttribute("username", user);
 			response.sendRedirect("http://localhost:8080");
 		} else {
-			System.out.println("Fail");
+			System.out.println("Failed to login");
 			HttpSession session = request.getSession();
 			session.setAttribute("error", "invalid credentials");
 			doGet(request, response);
