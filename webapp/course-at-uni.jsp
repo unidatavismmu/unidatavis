@@ -36,9 +36,6 @@
 	<main>
 		<%
 			String uniName = request.getParameter("uniName");
-			String uniID = request.getParameter("uniID");
-			String newString = uniID.replaceAll("\\s+","");
-			int uid = Integer.parseInt(newString);			
 			String courseName = request.getParameter("courseName");
 
 		%>

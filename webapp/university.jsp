@@ -1,4 +1,4 @@
-<%@ page import="java.util.ArrayList,models.University,java.io.InputStreamReader,java.io.BufferedReader" %>
+<%@ page import="java.util.ArrayList,models.University"%>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
@@ -43,11 +43,9 @@
 
 		<h2>List of courses offered:</h2>
 			<%
-
 				String uniID = request.getParameter("uniID");
 				String newString = uniID.replaceAll("\\s+","");
 				int uid = Integer.parseInt(newString);
-
 				ArrayList<String> courseNames = new ArrayList<String>();
 				courseNames = models.DAO.getAllCoursesOfferedByUni(uid);
 				String courseName;
@@ -56,7 +54,6 @@
 					courseName = courseNames.get(i);
 			%>
 					<form action="course-at-uni.jsp" method="POST">
-						<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
 						<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
 						<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
 					  	<button type="submit"><% out.println(courseName); %></button>

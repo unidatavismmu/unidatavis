@@ -389,4 +389,94 @@ public class DAO {
 		return courseNames;
 	}
 	
+	public static University getUniByID(int uniID) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM Universities WHERE \"University ID\" = '"+uniID+"'";
+		System.out.println(query);
+		
+		University uni = null;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				uni = new University(rs.getInt("University ID"), rs.getInt("Rank"), rs.getString("University Name"),
+						rs.getInt("Entry Standards"), rs.getFloat("Student Satisfaction"), rs.getFloat("Research Quality"), rs.getFloat("Research Intensity"),
+						rs.getFloat("Graduate Prospects"), rs.getFloat("Student-Staff Ratio"), rs.getFloat("Academic Services Spend"),
+						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Completion"),
+						rs.getInt("Overall Score"));
+				
+				System.out.println(uni.getUniversity_name());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return uni;
+	 }
+	
+	public static ArrayList<University> getAllUnisThatOfferCourse(String courseName) throws SQLException {
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+
+		ArrayList<University> uniList = new ArrayList<University>();
+		University uni;
+		
+		courseName = courseName.replaceAll("\\s+$", "");
+		
+		
+			String query = "SELECT * FROM \"" + courseName + "\"";
+	
+			try {
+				c = getConnection();
+				s = c.createStatement();
+				System.out.println("Query: " + query);
+				rs = s.executeQuery(query);
+	
+				while (rs.next()) {
+					int uniID = rs.getInt("University ID");
+					uni = getUniByID(uniID);
+					uniList.add(uni);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+		
+		return uniList;
+	}
+	
 }

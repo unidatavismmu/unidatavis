@@ -1,4 +1,4 @@
-<%@ page import="java.util.ArrayList,models.University" %>
+<%@ page import="java.util.ArrayList,models.University,java.io.InputStreamReader,java.io.BufferedReader" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
@@ -31,26 +31,36 @@
 		</ul>
 	</nav>
 
-	<!-- Main body, area with list of unis -->
+
+	<!-- Main body -->
 	<main>
-		<h1>Courses:</h1>
-		
 		<%
-			ArrayList<String> courseList = new ArrayList<String>();
-			courseList = models.DAO.getAllCourseNames();
-			String courseName;
-	
-			for (int i=0;i<courseList.size();i++) {
-			courseName = courseList.get(i);
+			String courseName = request.getParameter("courseName");
 		%>
-				<form action="course.jsp" method="POST">
-					<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
-				  	<button type="submit"><%out.println(courseName);%></button>
-			  	</form>
-		<%
-			}
-		%>
-		</a>
+		<h1><%out.println(courseName);%></h1>
+
+		<br>
+
+		<h2>List of universities that offer this course:</h2>
+			<%
+				ArrayList<University> uniList = new ArrayList<University>();
+				uniList = models.DAO.getAllUnisThatOfferCourse(courseName);
+				University uni;
+				String uniName;
+
+				for (int i=0;i<uniList.size();i++) {
+					uni = uniList.get(i);
+					uniName = uni.getUniversity_name();
+			%>
+					<form action="course-at-uni.jsp" method="POST">
+						<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
+						<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
+					  	<button type="submit"><% out.println(uniName); %></button>
+				  	</form>
+			<%
+				}
+			%>
+			
 
 	</main>
 
