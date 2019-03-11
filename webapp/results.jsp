@@ -49,42 +49,56 @@
 				ArrayList<University> uniList = new ArrayList<University>();
 				uniList = models.DAO.searchUniversities(searchQuery);
 				String uniName;
+				int uniID;
 			%>
 			<%
 				for (University u : uniList) {
 				uniName = u.getUniversity_name();
+				uniID = u.getUniversity_id();
 			%>
-			<br>
-			<a href="universities/<%out.println(uniName.toLowerCase());%>.jsp">
+				<form action="university.jsp" method="POST">
+					<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
+					<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
+				  	<button type="submit">
+				  		<%
+						if (uniList.size() == 0) {
+							out.println("No universities found.");
+						} else {
+							out.println(uniName);
+						}
+						%>
+					</button>
+			  	</form>
+
 			<%
-				if (uniList.size() == 0) {
-					out.println("No universities found.");
-				} else {
-					out.println(uniName);
 				}
-			}
 			%>
 			</a>
 
 			<h3>Courses</h3>
 			<%
-			ArrayList<String> courseList = new ArrayList<String>();
-			courseList = models.DAO.searchCourses(searchQuery);
-			String courseName;
+				ArrayList<String> courseList = new ArrayList<String>();
+				courseList = models.DAO.searchCourses(searchQuery);
+				String courseName;
 			%>
 			<%
 				for (int i=0;i<courseList.size();i++) {
 				courseName = courseList.get(i);
 			%>
-			<br>
-			<a href="universities/<%out.println(courseName.toLowerCase());%>.jsp">
+				<form action="course.jsp" method="POST">
+					<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
+				  	<button type="submit">
+				  		<%
+						if (courseList.size() == 0) {
+							out.println("No courses found.");
+						} else {
+							out.println(courseName);
+						}
+						%>
+					</button>
+			  	</form>
 			<%
-				if (courseList.size() == 0) {
-					out.println("No courses found.");
-				} else {
-					out.println(courseName);
 				}
-			}
 			%>
 			</a>
 				
