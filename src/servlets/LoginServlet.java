@@ -27,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 		String user = null;
 		String uname = request.getParameter("username");
 		String password = request.getParameter("password");
-		
 		DAO dao = new DAO();
 		try {
 			user = dao.getUser(uname, password);

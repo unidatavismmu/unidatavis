@@ -90,7 +90,7 @@
 	<!-- Navigation links to different areas of the site -->
 	<nav>
 
-		<ul>
+		<ul style="padding-top:10px; padding-bottom:10px">
 
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
