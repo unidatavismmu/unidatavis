@@ -1,7 +1,7 @@
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
-	<title>Title</title>
+	<title>Unidata - Home</title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 
@@ -117,13 +117,14 @@
 		
 	</div>
 			
-
 	</main>
 
+	
+
 	<!-- Footer containing references and about information -- >
-	<footer>
+	<div>
 		<p>References go here</p>
-	</footer>
+	</div>
 
 </body>
 </html>
