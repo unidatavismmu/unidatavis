@@ -13,11 +13,14 @@
 	<!-- Header includes title and links to login / logout -->
 	<header>
 
+		<!-- Page header with site name and link to home page. -->
 		<a href="index.jsp" style="text-decoration:none"><center><h1>Unidata</h1></center></a>
 		
+		<!-- Div containing the modal for the registration form. -->
 		<div id="id02" class="modal2">
   			<span onclick="document.getElementById('id02').style.display='none'" class="close2" title="Close Modal2">&times;</span>
   	
+  			<!-- Registration form -->
   			<form class="modal-content2" action="register">
 
     			<div class="container">
@@ -27,6 +30,7 @@
 
 			      <hr>
 		  
+		  		  <!-- Inputs for the form -->
 				  <label for="username"><b>Username</b></label>
 			      <input type="text" placeholder="Enter Name" name="username" required>
 				  
@@ -73,6 +77,18 @@
 	<script>
 	// Get the modal
 	var modal = document.getElementById('id02');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+	</script>
+
+	<script>
+	// Get the modal
+	var modal = document.getElementById('id01');
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {

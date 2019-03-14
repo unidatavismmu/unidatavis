@@ -114,8 +114,6 @@
 			First Name<input type="text" placeholder="" name="firstName">
 			Last Name<input type="text" placeholder="" name="lastName">
 			Email<input type="text" placeholder="" name="email">
-			Telephone<input type="text" placeholder="" name="telephone">
-			Company Name<input type="text" placeholder="" name="companyName">
 			<hr>
 			<p>To save these settings, please enter your password</p>
 			Password<input type="text" placeholder="" name="password">

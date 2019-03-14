@@ -106,16 +106,18 @@
 	</nav>
 
 	<!-- Main body, area with list of unis -->
-	<main>
-		<h1>Universities:</h1>
-		
+	<div id="main">
+		<center><h1 id="heading">Universities</h1></center>
+		<br>
+		<hr>
+		<br>
+
 		<%
 			ArrayList<University> uniList = new ArrayList<University>();
 			uniList = models.DAO.getAllUniversities();
 			String uniName;
 			int uniID;
-		%>
-		<%
+
 			for (University u : uniList) {
 				uniName = u.getUniversity_name();
 				uniID = u.getUniversity_id();
@@ -131,7 +133,7 @@
 			}
 		%>
 
-	</main>
+	</div>
 
 	<!-- Footer containing references and about information -- >
 	<footer>

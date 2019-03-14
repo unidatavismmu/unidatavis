@@ -106,7 +106,7 @@
 	</nav>
 
 	<!-- Main body, area with list of unis -->
-	<main>
+	<div id="main">
 		<h1>Courses:</h1>
 		
 		<%
@@ -126,7 +126,7 @@
 		%>
 		</a>
 
-	</main>
+	</div>
 
 	<!-- Footer containing references and about information -- >
 	<footer>
