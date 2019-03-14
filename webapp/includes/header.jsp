@@ -9,13 +9,12 @@
 		<!-- Div containing the modal for the registration form. -->
 		<div id="id02" class="modal2">
   			<span onclick="document.getElementById('id02').style.display='none'" class="close2" title="Close Modal2">&times;</span>
-  	
+
   			<!-- Registration form -->
   			<form method="post" class="modal-content2" action="register">
-
     			<div class="container">
 
-			      <h1>Register</h1>
+			      <center><h3>Unidata</h3></center>
 			      <p>Please fill in this form to create an account.</p>
 
 			      <hr>
@@ -39,7 +38,7 @@
       			  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       				<div class="clearfix">
-        				<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn2">Cancel</button>
+        				<button type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
        					<button type="submit" class="registerButton">Register</button>
       				</div>
     			</div>
@@ -47,23 +46,24 @@
 		</div>
 			
 		<div id="id01" class="modal">
-  			<form  method="post" class="modal-content animate" action="login">
-				<div class="imgcontainer">
-					<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-				</div>
-		
+			<span onclick="document.getElementById('id01').style.display='none'" class="close2" title="Close Modal2">&times;</span>
+
+  			<form  method="post" class="modal-content2" action="login">
 				<div class="container">
+			        <center><h3>Unidata</h3></center>
+			      	<p>Please fill in this form to log in.</p>
+
 				    <label for="username"><b>Username</b></label>
 				    <input type="text" placeholder="Enter Username" name="username" required>
 
 				    <label for="password"><b>Password</b></label>
 				    <input type="password" placeholder="Enter Password" name="password" required>
-				        
+				    
+				<div class="clearfix">    
 				    <button type="submit">Login</button>
+				    <button type="button" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
     			</div>
 
-    			<div class="container" style="background-color:#f1f1f1">
-      				<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
     			</div>
 
 			</form>
@@ -80,16 +80,13 @@
 	    modal.style.display = "none";
 	  }
 	}
-	</script>
 
-	<script>
-	// Get the modal
-	var modal = document.getElementById('id01');
+	var modal1 = document.getElementById('id01');
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
+	  if (event.target == modal1) {
+	    modal1.style.display = "none";
 	  }
 	}
 	</script>

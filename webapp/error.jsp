@@ -7,7 +7,7 @@
 </head>
 <body>
 	<center>
-		<h1 style="color:black;">Forbidden</h1>
+		<h1 style="color:black;">Error</h1>
 		<br>
 		<a href="../">Home</a>
 	</center>

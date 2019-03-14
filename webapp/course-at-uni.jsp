@@ -1,4 +1,4 @@
-<%@ page import="java.util.ArrayList,models.University,java.util.Map,java.util.HashMap,java.util.List" %>
+<%@ page import="controller.Controller,java.util.ArrayList,models.University,java.util.Map,java.util.HashMap,java.util.List" %>
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="com.google.gson.JsonObject"%>
  

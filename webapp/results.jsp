@@ -1,4 +1,4 @@
-<%@ page import="java.util.ArrayList,models.University" %>
+<%@ page import="controller.Controller,java.util.ArrayList,models.University" %>
 <html>
 <head>
 

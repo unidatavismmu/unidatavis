@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if (Controller.loggedIn == true) {
-			System.out.println("Already Logged in");
+			System.out.println("Error: Already Logged in");
 			response.setContentType("text/html");
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			RequestDispatcher view = request.getRequestDispatcher("/forbidden.jsp");
@@ -77,6 +77,7 @@ public class RegisterServlet extends HttpServlet {
 				Set<String> errorSet = new HashSet<String>(errors);
 				request.setAttribute("errors", errorSet);
 				request.setAttribute("values", values);
+				response.sendRedirect("/error.jsp");
 				doGet(request, response);
 			} else {
 				boolean created;
@@ -89,10 +90,11 @@ public class RegisterServlet extends HttpServlet {
 				}
 
 				if (created) {
-					System.out.println("Success");
-					response.sendRedirect("http://localhost:8080");
+					System.out.println("Registration Success: " + username);
+					response.sendRedirect("../");
 				} else {
-					System.out.println("Fail");
+					System.out.println("Registration Failed: " + username);
+					response.sendRedirect("/error.jsp");
 					doGet(request, response);
 				}
 			}

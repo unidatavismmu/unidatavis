@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 		String uname = request.getParameter("username");
 		String password = request.getParameter("password");
 		DAO dao = new DAO();
+		
 		try {
 			user = dao.getUser(uname, password);
 			System.out.println(user);
@@ -37,15 +38,15 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		if (user != null) {
-			System.out.println("Logged in");
+			System.out.println("Logged in: " + uname);
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedin", true);
 			session.setAttribute("username", user);
 			Controller.loggedIn = true;
-			response.sendRedirect("http://localhost:8080");
+			response.sendRedirect("../");
 		} else {
-			response.sendRedirect("forbidden.jsp");
-			System.out.println("Failed to login");
+			response.sendRedirect("/error.jsp");
+			System.out.println("Failed to login: " + uname);
 			HttpSession session = request.getSession();
 			session.setAttribute("error", "invalid credentials");
 			doGet(request, response);

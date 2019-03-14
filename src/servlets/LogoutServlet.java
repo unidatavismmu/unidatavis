@@ -18,7 +18,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();   
 		Controller.loggedIn = false;
-		response.sendRedirect("http://localhost:8080");   
+		response.sendRedirect("../");   
 	}
 	
 	@Override
