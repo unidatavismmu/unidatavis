@@ -5,6 +5,7 @@
 	<title>Home - Unidata</title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 </head>
 
