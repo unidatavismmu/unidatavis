@@ -92,6 +92,51 @@ public class DAO {
 		return true;
 	}
 	
+	public Boolean updatePassword(String username, String password) throws SQLException {
+		
+		// Creates connection and prepared statement variables.
+		Connection c = null;
+		PreparedStatement ps = null;
+		
+		// Query to be run.
+		String query = "UPDATE Users SET password = ? WHERE username = ?";		
+		
+		try {
+			// Sets the prepared statement and gets the connection.
+			c = getConnection();
+			System.out.println("Query: " + query);
+			ps = c.prepareStatement(query);
+			
+			// Sets values for the prepared statement.
+			ps.setString(1, password);
+			ps.setString(2, username);
+			
+			// Executes the update and returns true if there are any rows in the database (data has been inserted).
+			int rs = ps.executeUpdate();
+			if (rs != 0) {
+				return true;
+			}
+			
+		} catch(Exception e) {
+			
+			// Returns false if the data has not been inserted.
+			System.out.println(e.getMessage());
+			return false;
+			
+		} finally {
+			
+			// Close variables.
+			if(ps != null) {
+				ps.close();
+			}
+			if(c != null) {
+				c.close();
+			}
+		}
+			
+		return true;
+	}
+	
 	/**
 	 * Method used to insert a user to the database.
 	 * 

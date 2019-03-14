@@ -57,4 +57,12 @@ version="2.5">
     <servlet-name>UpdateAccountServlet</servlet-name>
     <url-pattern>/updateAccount</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>UpdatePasswordServlet</servlet-name>
+    <servlet-class>servlets.UpdatePasswordServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>UpdatePasswordServlet</servlet-name>
+    <url-pattern>/updatePassword</url-pattern>
+</servlet-mapping>
 </web-app>

@@ -37,6 +37,8 @@ public class Controller {
 			ctx.addServlet("UniversitiesServlet", "/universities");
 			ctx.addServlet("CoursesServlet", "/courses");
 			ctx.addServlet("RegisterServlet", "/register");
+			ctx.addServlet("UpdateAccountServlet", "/updateAccount");
+			ctx.addServlet("UpdatePasswordServlet", "/updatePassword");
 
 			// Sets the handler and starts the server.
 			server.setHandler(ctx); 

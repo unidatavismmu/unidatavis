@@ -138,8 +138,10 @@
 
 		<hr>
 		<center><h2>Change Password</h2></center>
-		<form id="updatePasswordForm" action="/updatePassword">
+		<form id="updatePasswordForm" method="POST" action="/updatePassword">
 			New Password<input type="password" placeholder="Enter new password" name="newPassword">
+			Confirm New Password<input type="password" placeholder="Confirm Password" name="confirmNewPassword">
+			<br>
 			Current Password<input type="password" placeholder="Enter current password" name="currentPassword">
 			<input type="submit" value="Save">
 		</form>
