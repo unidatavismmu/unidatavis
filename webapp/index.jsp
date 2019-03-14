@@ -1,11 +1,10 @@
+<%@ page import="controller.Controller" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
 	<title>Unidata - Home</title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
-
-
 
 </head>
 
@@ -48,7 +47,7 @@
 		</div>
 			
 		<div id="id01" class="modal">
-  			<form class="modal-content animate" action="login">
+  			<form  method="post" class="modal-content animate" action="login">
 				<div class="imgcontainer">
 					<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 				</div>
@@ -65,7 +64,6 @@
 
     			<div class="container" style="background-color:#f1f1f1">
       				<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      				<span class="password">Forgot <a href="#">password?</a></span>
     			</div>
 
 			</form>
@@ -95,8 +93,13 @@
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
 			<li><a href="courses.jsp">Courses</a></li>
-			<li><a href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
-			<li><a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
+			<% if (Controller.loggedIn == false) { %>
+				<li><a href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+				<li><a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
+			<% } else { %>
+				<li><a href="account.jsp">Account</a></li>
+				<li><a href="logout">Logout</a></li>
+			<% } %>
 
 		</ul>
 

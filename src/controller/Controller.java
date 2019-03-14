@@ -12,7 +12,9 @@ import org.eclipse.jetty.webapp.WebAppContext;
  *
  */
 public class Controller {
-
+	
+		public static Boolean loggedIn = false;
+	
 		/**
 		 * Main method of the program, creates server and instantiates servlets.
 		 * 

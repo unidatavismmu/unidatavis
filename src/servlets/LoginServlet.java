@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.Controller;
 import models.DAO;
 
 public class LoginServlet extends HttpServlet {
@@ -40,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedin", true);
 			session.setAttribute("username", user);
+			Controller.loggedIn = true;
 			response.sendRedirect("http://localhost:8080");
 		} else {
 			System.out.println("Failed to login");
