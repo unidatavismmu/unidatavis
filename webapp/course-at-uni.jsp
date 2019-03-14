@@ -49,27 +49,9 @@ String dataPoints = gsonObj.toJson(list);
 
 <body>
 		
-	<!-- Website title, navigation and search bar are centered on the page -->
-	
-	<!-- Header includes title -->
-	<header>
-		<h1>Title</h1>
-		<p><a href="register.jsp">Register</a></p>
-		<p><a href="login.jsp">Login</a></p>
-	</header>
-
-	<!-- Navigation links to different areas of the site -->
-	<nav>
-		<ul>
-			<li><a href="index.jsp">Home</a></li>
-			<li><a href="universities.jsp">Universities</a></li>
-			<li><a href="courses.jsp">Courses</a></li>
-			<li><form action="/results.jsp">
-				<input type="text" placeholder="Type here..." name="searchQuery">
-				<input type="submit" value="Search">
-			</form></li>
-		</ul>
-	</nav>
+	<!-- Includes other files (code containing the header and navbar which are the same on each page) -->
+	<%@include  file="includes/header.jsp" %>
+	<%@include  file="includes/navbar.jsp" %>
 
 
 	<!-- Main body -->
