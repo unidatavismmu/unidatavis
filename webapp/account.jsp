@@ -7,6 +7,17 @@
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 </head>
+
+	<% if (Controller.loggedIn == false) {
+		response.sendRedirect("http://localhost:8080/");
+	%>
+		<div class="alert alert-danger" role="alert">
+			Please log in first!
+		</div>
+	<%
+
+	}
+	%>
 		
 	
 <!-- Header includes title and links to login / logout -->
@@ -105,23 +116,40 @@
 	</nav>
 
 	<!-- Main body, area with account details form -->
-	<main>
+	<div id="main">
 
 		<!-- TODO: Use SQL to update account details -->
 			
-		<h1>Account Info</h1>
-		<form action="/updateAccount.jsp">
-			First Name<input type="text" placeholder="" name="firstName">
-			Last Name<input type="text" placeholder="" name="lastName">
-			Email<input type="text" placeholder="" name="email">
-			<hr>
+		<center><h1 id="black">My Account</h1></center>
+		<br><hr><br>
+		<center><h2>Saved Universities</h2></center>
+
+		<br><hr><br>
+
+		<center><h2>Update Account</h2></center>
+		<form id="updateAccountForm" method="POST" action="/updateAccount">
+			First Name<input type="text" placeholder="Enter first name" name="firstNameUpdate">
+			Last Name<input type="text" placeholder="Enter last name" name="secondNameUpdate">
+			Email<input type="text" placeholder="Enter email address" name="emailUpdate">
 			<p>To save these settings, please enter your password</p>
-			Password<input type="text" placeholder="" name="password">
-			<input type="submit" value="Save Settings">
+			Password<input type="password" placeholder="Enter password" name="password">
+			<input type="submit" value="Save">
 		</form>
+
+		<hr>
+		<center><h2>Change Password</h2></center>
+		<form id="updatePasswordForm" action="/updatePassword">
+			New Password<input type="password" placeholder="Enter new password" name="newPassword">
+			Current Password<input type="password" placeholder="Enter current password" name="currentPassword">
+			<input type="submit" value="Save">
+		</form>
+
+		<br><hr><br>
+
+
 			
 
-	</main>
+	</div>
 
 	<!-- Aside with account details -->
 	<article>

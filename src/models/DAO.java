@@ -44,6 +44,54 @@ public class DAO {
     }
 	
 	
+	public Boolean updateUser(String username, String password, String firstName, String secondName, String emailAddress) throws SQLException {
+		
+		// Creates connection and prepared statement variables.
+		Connection c = null;
+		PreparedStatement ps = null;
+		
+		// Query to be run.
+		String query = "UPDATE Users SET firstName=?, lastName=?, emailAddress=? WHERE username = ? AND password = ?";		
+		
+		try {
+			// Sets the prepared statement and gets the connection.
+			c = getConnection();
+			System.out.println("Query: " + query);
+			ps = c.prepareStatement(query);
+			
+			// Sets values for the prepared statement.
+			ps.setString(1, firstName);
+			ps.setString(2, secondName);
+			ps.setString(3, emailAddress);
+			ps.setString(4, username);
+			ps.setString(5, password);
+			
+			// Executes the update and returns true if there are any rows in the database (data has been inserted).
+			int rs = ps.executeUpdate();
+			if (rs != 0) {
+				return true;
+			}
+			
+		} catch(Exception e) {
+			
+			// Returns false if the data has not been inserted.
+			System.out.println(e.getMessage());
+			return false;
+			
+		} finally {
+			
+			// Close variables.
+			if(ps != null) {
+				ps.close();
+			}
+			if(c != null) {
+				c.close();
+			}
+		}
+			
+		return true;
+	}
+	
 	/**
 	 * Method used to insert a user to the database.
 	 * 
@@ -51,15 +99,15 @@ public class DAO {
 	 * @return Boolean depending on if the user has been inserted or not.
 	 * @throws SQLException
 	 */
-	public Boolean insertUser(String username, String password) throws SQLException {
+	public Boolean insertUser(String username, String password, String firstName, String lastName, String emailAddress) throws SQLException {
 		
 		// Creates connection and prepared statement variables.
 		Connection c = null;
 		PreparedStatement ps = null;
 		
 		// Query to be run.
-		String query = "INSERT INTO users (username, password) "
-				+ "VALUES (?,?)";		
+		String query = "INSERT INTO Users (username, password, firstName, lastName, emailAddress) "
+				+ "VALUES (?,?,?,?,?)";		
 		
 		try {
 			// Sets the prepared statement and gets the connection.
@@ -70,9 +118,9 @@ public class DAO {
 			// Sets values for the prepared statement.
 			ps.setString(1, username);
 			ps.setString(2, password);
-			
-			// Prints the values for debugging purposes.
-			System.out.println(username + " " + password);
+			ps.setString(3, firstName);
+			ps.setString(4, lastName);
+			ps.setString(5, emailAddress);
 			
 			// Executes the update and returns true if there are any rows in the database (data has been inserted).
 			int rs = ps.executeUpdate();
@@ -107,8 +155,8 @@ public class DAO {
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
-		String query = "SELECT * FROM users WHERE username = ? AND password = ?;";
-
+		String query = "SELECT * FROM Users WHERE username = ? AND password = ?;";
+		
 		try {
 			getConnection = getConnection();
 			statement = getConnection.prepareStatement(query);
@@ -118,8 +166,7 @@ public class DAO {
 			result = statement.executeQuery();
 
 			while (result.next()) {
-
-				userName = result.getString("userName");
+				userName = result.getString("username");
 			}
 		} finally {
 			if (result != null) {

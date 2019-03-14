@@ -49,4 +49,12 @@ version="2.5">
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>UpdateAccountServlet</servlet-name>
+    <servlet-class>servlets.UpdateAccountServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>UpdateAccountServlet</servlet-name>
+    <url-pattern>/updateAccount</url-pattern>
+</servlet-mapping>
 </web-app>

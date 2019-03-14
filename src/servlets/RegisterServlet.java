@@ -12,8 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import controller.Controller;
 import models.DAO;
 
 public class RegisterServlet extends HttpServlet {
@@ -22,29 +22,17 @@ public class RegisterServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		response.setStatus(HttpServletResponse.SC_OK);
+		System.out.println("Register: GET REQUEST");
 
-		HttpSession session = request.getSession();
-		Object loggedin = session.getAttribute("loggedin");
-		if (loggedin == null) {
-			System.out.println("Not logged in");
-			response.setContentType("text/html");
-			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			RequestDispatcher view = request.getRequestDispatcher("/forbidden.jsp");
-			view.forward(request, response);
-		} else {
-			response.setContentType("text/html");
-			response.setStatus(HttpServletResponse.SC_OK);
-			RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
-			view.forward(request, response);
-		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Object loggedin = session.getAttribute("loggedin");
-		if (loggedin == null) {
-			System.out.println("Not loggedin");
+		
+		if (Controller.loggedIn == true) {
+			System.out.println("Already Logged in");
 			response.setContentType("text/html");
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			RequestDispatcher view = request.getRequestDispatcher("/forbidden.jsp");
@@ -57,15 +45,32 @@ public class RegisterServlet extends HttpServlet {
 
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String emailAddress = request.getParameter("emailAddress");
+
 
 			values.put("username", username);
 			values.put("password", password);
+			values.put("firstName", firstName);
+			values.put("lastName", lastName);
+			values.put("emailAddress", emailAddress);
+
 
 			if (username.isEmpty()) {
 				errors.add("username");
 			}
 			if (password.isEmpty()) {
 				errors.add("password");
+			}
+			if (firstName.isEmpty()) {
+				errors.add("firstName");
+			}
+			if (lastName.isEmpty()) {
+				errors.add("lastName");
+			}
+			if (emailAddress.isEmpty()) {
+				errors.add("emailAddress");
 			}
 
 			if (errors.size() != 0) {
@@ -76,7 +81,8 @@ public class RegisterServlet extends HttpServlet {
 			} else {
 				boolean created;
 				try {
-					created = dao.insertUser(username,password);
+					created = dao.insertUser(username,password,firstName,lastName,emailAddress);
+					created = true;
 				} catch (SQLException e) {
 					e.printStackTrace();
 					created = false;
@@ -84,7 +90,7 @@ public class RegisterServlet extends HttpServlet {
 
 				if (created) {
 					System.out.println("Success");
-					response.sendRedirect("../");
+					response.sendRedirect("http://localhost:8080");
 				} else {
 					System.out.println("Fail");
 					doGet(request, response);

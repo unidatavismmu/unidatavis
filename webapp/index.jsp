@@ -21,7 +21,7 @@
   			<span onclick="document.getElementById('id02').style.display='none'" class="close2" title="Close Modal2">&times;</span>
   	
   			<!-- Registration form -->
-  			<form class="modal-content2" action="register">
+  			<form method="post" class="modal-content2" action="register">
 
     			<div class="container">
 
@@ -35,7 +35,13 @@
 			      <input type="text" placeholder="Enter Name" name="username" required>
 				  
 			      <label for="email"><b>Email</b></label>
-			      <input type="text" placeholder="Enter Email" name="email" required>
+			      <input type="text" placeholder="Enter Email" name="emailAddress" required>
+
+			      <label for="firstName"><b>First Name</b></label>
+			      <input type="text" placeholder="Enter First Name" name="firstName" required>
+
+			      <label for="lastName"><b>Last Name</b></label>
+			      <input type="text" placeholder="Enter Last Name" name="lastName" required>
 
 			      <label for="password"><b>Password</b></label>
 			      <input type="password" placeholder="Enter Password" name="password" required>
