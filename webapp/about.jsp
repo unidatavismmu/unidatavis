@@ -25,6 +25,40 @@
 		data up-to date and relevant. It is part of a project produced by
 		MMU students:</p>
 
+	<center>
+	<div class="wrapper">
+		<div class="member">
+			<img src="images/download.png" width="100px" height="100px"/>
+			<h6>Catherine Watson</h6>
+			<p>Project Manager</p>
+		</div>
+		<div class="member">
+			<img src="images/download.png" width="100px" height="100px"/>
+			<h6>Jake Taylor</h6>
+			<p>Tech Lead</p>
+		</div>
+		<div class="member">
+			<img src="images/download.png" width="100px" height="100px"/>
+			<h6>Andrew Watts</h6>
+			<p>Client Advocate</p>
+		</div>
+		<div class="member">
+			<img src="images/download.png" width="100px" height="100px"/>
+			<h6>Tasneem Tasneem</h6>
+			<p>Client Advocate</p>
+		</div>
+		<div class="member">
+			<img src="images/download.png" width="100px" height="100px"/>
+			<h6>Muhammad Waleed</h6>
+			<p>User Advocate</p>
+		</div>
+		<div class="member">
+			<img src="images/download.png" width="100px" height="100px"/>
+			<h6>Bilal Khan</h6>
+			<p>User Advocate</p>
+		</div>
+	</div>
+	</center>
 		<p>The data on the site is drawn from national surveys of students and
 		information collected from providers of higher education.  It
 		includes:</p>

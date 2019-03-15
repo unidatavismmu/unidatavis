@@ -309,13 +309,20 @@ h3 {
   color: white;
 }
 
-#wrapper {
+.wrapper {
   display: flex;
+}
+.member {
+  flex: 1;
 }
 #studentSatisfaction {
   flex: 1;
 }
 #researchQuality {
+  flex: 1;
+
+}
+#entryStandards {
   flex: 1;
 
 }

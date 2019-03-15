@@ -43,7 +43,17 @@ public class DAO {
 		return c;
     }
 	
-	
+	/**
+	 * Method updates user in the database
+	 * 
+	 * @param username
+	 * @param password
+	 * @param firstName
+	 * @param secondName
+	 * @param emailAddress
+	 * @return true or false depending whether update was executed.
+	 * @throws SQLException
+	 */
 	public Boolean updateUser(String username, String password, String firstName, String secondName, String emailAddress) throws SQLException {
 		
 		// Creates connection and prepared statement variables.
@@ -193,6 +203,52 @@ public class DAO {
 		return true;
 	}
 	
+	public Boolean saveUni(String username, String uniName) throws SQLException {
+		
+		// Creates connection and prepared statement variables.
+		Connection c = null;
+		PreparedStatement ps = null;
+		
+		// Query to be run.
+		String query = "INSERT INTO SavedUnis (username, uniName) "
+				+ "VALUES (?,?)";		
+		
+		try {
+			// Sets the prepared statement and gets the connection.
+			c = getConnection();
+			System.out.println("Query: " + query);
+			ps = c.prepareStatement(query);
+			
+			// Sets values for the prepared statement.
+			ps.setString(1, username);
+			ps.setString(2, uniName);
+			
+			// Executes the update and returns true if there are any rows in the database (data has been inserted).
+			int rs = ps.executeUpdate();
+			if (rs != 0) {
+				return true;
+			}
+			
+		} catch(Exception e) {
+			
+			// Returns false if the data has not been inserted.
+			System.out.println(e.getMessage());
+			return false;
+			
+		} finally {
+			
+			// Close variables.
+			if(ps != null) {
+				ps.close();
+			}
+			if(c != null) {
+				c.close();
+			}
+		}
+			
+		return true;
+	}
+	
 	public String getUser(String uname, String password) throws SQLException {
 
 		String userName = null;
@@ -207,7 +263,7 @@ public class DAO {
 			statement = getConnection.prepareStatement(query);
 			statement.setString(1, uname);
 			statement.setString(2, password);
-			System.out.println("DBQuery: " + query);
+			System.out.println("Query: " + query);
 			result = statement.executeQuery();
 
 			while (result.next()) {
@@ -267,6 +323,90 @@ public class DAO {
 
 		// Returns final list of university objects.
 		return studentSatisfaction;
+	 }
+	
+	public float getEntryStandards(String uniName, String courseName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM '" + courseName + "' WHERE \"University Name\" = '"+uniName+"'";
+		System.out.println(query);
+		
+		float entryStandards = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				entryStandards = rs.getFloat("Entry Standards");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return entryStandards;
+	 }
+	
+	public float getAverageEntryStandards(String uniName, String courseName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT AVG(\"Entry Standards\") AS \"Avg\" FROM '" + courseName + "'";
+		System.out.println(query);
+		
+		float avgEntryStandards = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				avgEntryStandards = rs.getFloat("Avg");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return avgEntryStandards;
 	 }
 	
 	public float getResearchQuality(String uniName, String courseName) throws SQLException {
@@ -347,7 +487,6 @@ public class DAO {
 						
 				// Adds the university to the array and prints the name for debugging.
 				universities.add(uni);
-				System.out.println(uni.getUniversity_name());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -403,7 +542,6 @@ public class DAO {
 				
 				// Adds the university to the array and prints the name for debugging.	
 				universities.add(uni);
-				System.out.println(uni.getUniversity_name());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -438,7 +576,7 @@ public class DAO {
 		ResultSet rs = null;
 		
 		// Query to be run. Printed for debugging.
-		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name !='Universities' AND name != 'sqlite_sequence' AND name != 'Users'";
+		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name !='Universities' AND name != 'SavedUnis' AND name != 'sqlite_sequence' AND name != 'Users'";
 		System.out.println(query);
 		
 		ArrayList<String> courseNames = new ArrayList<String>();
@@ -452,7 +590,6 @@ public class DAO {
 			// Loops through all table names and adds them to the array.
 			while(rs.next()) {	
 				courseNames.add(rs.getString("name"));
-				System.out.println(rs.getString("name"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -488,7 +625,7 @@ public class DAO {
 		ResultSet rs = null;
 		
 		// Query to be run. Printed for debugging.
-		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name LIKE '%"+courseName+"%' AND name !='Universities' AND name != 'sqlite_sequence' AND name != 'Users'";
+		String query = "SELECT * FROM sqlite_master WHERE type='table' AND name LIKE '%"+courseName+"%' AND name !='Universities' AND name != 'SavedUnis' AND name != 'sqlite_sequence' AND name != 'Users'";
 		System.out.println(query);
 		
 		// Define array list to store all universities.
@@ -503,7 +640,6 @@ public class DAO {
 			// Loops through all rows in the result set and creates a new university object with all the data.
 			while(rs.next()) {	
 				courseNames.add(rs.getString("name"));
-				System.out.println(rs.getString("name"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -525,6 +661,43 @@ public class DAO {
 		return courseNames;
 	 }
 	
+	public static String getDescription(String uniName) throws SQLException {
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		String description = "";
+		
+			String query = "SELECT * FROM Universities WHERE \"University Name\"='" + uniName + "'";
+			System.out.println(uniName);
+			try {
+				c = getConnection();
+				s = c.createStatement();
+				System.out.println("Query: " + query);
+				rs = s.executeQuery(query);
+	
+				if (rs.next()) {
+					description = rs.getString("Description");
+					System.out.println(description);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+		
+		return description;
+	}
+	
 	public static ArrayList<String> getAllCoursesOfferedByUni(int uniID) throws SQLException {
 		Connection c = null;
 		Statement s = null;
@@ -533,7 +706,7 @@ public class DAO {
 		ArrayList<String> courseNames = new ArrayList<String>();
 		String courseName;
 		
-		for (int i=0;i<(getAllCourseNames().size())-3;i++) {
+		for (int i=0;i<(getAllCourseNames().size())-4;i++) {
 			courseName = getAllCourseNames().get(i);
 		
 			String query = "SELECT * FROM \"" + courseName + "\" WHERE \"University ID\"= " + uniID;
@@ -591,7 +764,6 @@ public class DAO {
 						rs.getInt("Facilities Spend"), rs.getFloat("Good Honours"), rs.getFloat("Degree Completion"),
 						rs.getInt("Overall Score"));
 				
-				System.out.println(uni.getUniversity_name());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -622,7 +794,6 @@ public class DAO {
 		University uni;
 		
 		courseName = courseName.replaceAll("\\s+$", "");
-		
 		
 			String query = "SELECT * FROM \"" + courseName + "\"";
 	

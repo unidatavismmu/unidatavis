@@ -1,4 +1,4 @@
-<%@ page import="controller.Controller,java.util.ArrayList,models.University"%>
+<%@ page import="models.DAO,controller.Controller,java.util.ArrayList,models.University"%>
 <html>
 <head>
 	<!-- Get the name of the uni -->
@@ -19,21 +19,38 @@
 	<%@include  file="includes/header.jsp" %>
 	<%@include  file="includes/navbar.jsp" %>
 
+	<%
+		DAO dao = new DAO();
+		String uniID = request.getParameter("uniID");
+		String newString = uniID.replaceAll("\\s+","");
+		int uid = Integer.parseInt(newString);
+		ArrayList<String> courseNames = new ArrayList<String>();
+		courseNames = models.DAO.getAllCoursesOfferedByUni(uid);
+		String courseName;
+
+		String uniString = uniName.replaceAll("\\s+$", "");
+
+		String description = dao.getDescription(uniString);
+
+	%>
+
 	<!-- Main body -->
 	<div id="main">
 		<center><h1 id="heading"><%out.println(uniName);%></h1></center>
 
 		<br><hr><br>
 		
+		<p><% out.println(description);%></p>
 
-		<center><h4>List of courses offered:</h4></center>
+	    <form method="post" action="/saveUni">
+	    	<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
+	      	<button class="btn btn-primary" type="submit">Save</button>
+	    </form>
+
+		<br><hr><br>
+
+		<center><h4>Courses offered:</h4></center>
 			<%
-				String uniID = request.getParameter("uniID");
-				String newString = uniID.replaceAll("\\s+","");
-				int uid = Integer.parseInt(newString);
-				ArrayList<String> courseNames = new ArrayList<String>();
-				courseNames = models.DAO.getAllCoursesOfferedByUni(uid);
-				String courseName;
 
 				for (int i=0;i<courseNames.size();i++) {
 					courseName = courseNames.get(i);

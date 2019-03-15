@@ -65,4 +65,12 @@ version="2.5">
     <servlet-name>UpdatePasswordServlet</servlet-name>
     <url-pattern>/updatePassword</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>SaveUniServlet</servlet-name>
+    <servlet-class>servlets.SaveUniServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>SaveUniServlet</servlet-name>
+    <url-pattern>/saveUni</url-pattern>
+</servlet-mapping>
 </web-app>

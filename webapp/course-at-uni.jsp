@@ -7,8 +7,14 @@
 	DAO dao = new DAO();
 	float studentSatisfaction = dao.getStudentSatisfaction(uniName.replaceAll("\\s+$", ""),courseName.replaceAll("\\s+$", ""));
 	System.out.println("Student satisfaction: " + studentSatisfaction);
+
 	float researchQuality = dao.getResearchQuality(uniName.replaceAll("\\s+$", ""),courseName.replaceAll("\\s+$", ""));
 	System.out.println("Research Quality: " + researchQuality);
+
+  float entryStandards = dao.getEntryStandards(uniName.replaceAll("\\s+$", ""),courseName.replaceAll("\\s+$", ""));
+  System.out.println("Entry Standards: " + entryStandards);
+  float avgEntryStandards = dao.getAverageEntryStandards(uniName.replaceAll("\\s+$", ""),courseName.replaceAll("\\s+$", ""));
+  System.out.println("Avg Entry Standards: " + avgEntryStandards);
 
 %>
 
@@ -34,8 +40,10 @@
 		<br>
 		<center><h2 id="black"><%out.println(courseName + " at " + uniName);%></h2></center>
 
+    <hr>
+
 		<br>
-		<div id="wrapper">
+		<div class="wrapper">
 
 		<div id="studentSatisfaction">
 			<h4 style="padding-left:75px;">Student Satisfaction</h4>
@@ -54,6 +62,16 @@
 
 		</div>
 		</div>
+
+    <br><hr><br>
+    
+    <div class="wrapper">
+      <div id="entryStandards">
+        <h4 style="padding-left:75px;">Entry Standards</h4>
+
+        <canvas id="entryStandardsChart" style="max-width: 500px;"></canvas>
+      </div>
+    </div>
 
 		
 	</div>
@@ -103,6 +121,30 @@
       }]
     }
   });
+
+  var ctx = document.getElementById("entryStandardsChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Average", ""],
+      datasets: [{
+        label: 'Entry Standards',
+        data: [<% out.println(avgEntryStandards); %>,<% out.println(entryStandards); %>],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 1
+      }]
+    }
+  });
+
+</script>
+
 
 </script>
 
