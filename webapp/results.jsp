@@ -16,19 +16,16 @@
 	<%@include  file="includes/navbar.jsp" %>
 
 	<!-- Main body, area with list of unis -->
-	<main>
+	<div id="main">
 
 		<%
 			String searchQuery = request.getParameter("searchQuery");
     	%>
 			<!-- TODO: get list of unis based on search results -->
-		<h2>Search Results:
-
-			<%
-				out.println(searchQuery);
-			%></h2>
+		<center><h2>Search Results: <%out.println(searchQuery);%></h2></center>
+		<br><hr>
 			
-			<h3>Universities</h3>
+			<center><h3>Universities</h3></center>
 			<%
 				ArrayList<University> uniList = new ArrayList<University>();
 				uniList = models.DAO.searchUniversities(searchQuery);
@@ -43,7 +40,7 @@
 				<form action="university.jsp" method="POST">
 					<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
 					<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
-				  	<button type="submit">
+				  	<button class="btn btn-primary" type="submit">
 				  		<%
 						if (uniList.size() == 0) {
 							out.println("No universities found.");
@@ -59,7 +56,9 @@
 			%>
 			</a>
 
-			<h3>Courses</h3>
+			<hr>
+
+			<center><h3>Courses</h3></center>
 			<%
 				ArrayList<String> courseList = new ArrayList<String>();
 				courseList = models.DAO.searchCourses(searchQuery);
@@ -85,9 +84,11 @@
 				}
 			%>
 			</a>
+
+			<br>
 				
 
-	</main>
+	</div>
 
 	<!-- Footer containing references and about information -- >
 	<footer>

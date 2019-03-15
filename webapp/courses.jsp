@@ -3,7 +3,7 @@
 <head>
 
 	<!-- Head defines title and links to CSS -->
-	<title>Unidata - Course List</title>
+	<title>Course List - Unidata</title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,9 @@
 
 	<!-- Main body, area with list of unis -->
 	<div id="main">
-		<h1>Courses:</h1>
+		<center><h1 id="heading">Courses</h1></center>
+
+		<br><hr><br>
 		
 		<%
 			ArrayList<String> courseList = new ArrayList<String>();
@@ -27,7 +29,7 @@
 		%>
 				<form action="course.jsp" method="POST">
 					<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
-				  	<button type="submit"><%out.println(courseName);%></button>
+				  	<button class="btn btn-primary" type="submit"><%out.println(courseName);%></button>
 			  	</form>
 		<%
 			}

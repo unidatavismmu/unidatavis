@@ -20,12 +20,12 @@
 
 
 	<!-- Main body -->
-	<main>
-		<h1><%out.println(courseName);%></h1>
+	<div id="main">
+		<center><h1 id="heading"><%out.println(courseName);%></h1></center>
 
-		<br>
+		<br><hr><br>
 
-		<h2>List of universities that offer this course:</h2>
+		<center><h4>Universities that offer this course:</h4></center>
 			<%
 				ArrayList<University> uniList = new ArrayList<University>();
 				uniList = models.DAO.getAllUnisThatOfferCourse(courseName);
@@ -39,14 +39,14 @@
 					<form action="course-at-uni.jsp" method="POST">
 						<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
 						<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
-					  	<button type="submit"><% out.println(uniName); %></button>
+					  	<button class="btn btn-primary" type="submit"><% out.println(uniName); %></button>
 				  	</form>
 			<%
 				}
 			%>
 			
 
-	</main>
+	</div>
 
 	<!-- Footer containing references and about information -- >
 	<footer>

@@ -20,13 +20,13 @@
 	<%@include  file="includes/navbar.jsp" %>
 
 	<!-- Main body -->
-	<main>
+	<div id="main">
+		<center><h1 id="heading"><%out.println(uniName);%></h1></center>
 
-		<h1><%out.println(uniName);%></h1>
+		<br><hr><br>
+		
 
-		<br>
-
-		<h2>List of courses offered:</h2>
+		<center><h4>List of courses offered:</h4></center>
 			<%
 				String uniID = request.getParameter("uniID");
 				String newString = uniID.replaceAll("\\s+","");
@@ -41,14 +41,14 @@
 					<form action="course-at-uni.jsp" method="POST">
 						<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
 						<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
-					  	<button type="submit"><% out.println(courseName); %></button>
+					  	<button class="btn btn-primary" type="submit"><% out.println(courseName); %></button>
 				  	</form>
 			<%
 				}
 			%>
 			
 
-	</main>
+	</div>
 
 </body>
 </html>

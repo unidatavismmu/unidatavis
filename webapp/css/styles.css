@@ -24,7 +24,7 @@ h1 {
 	
 }
 
-ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -32,7 +32,7 @@ ul {
   background-color: #333;
 }
 
-li 
+nav li 
 {
 	display: inline;
 }
@@ -305,6 +305,10 @@ h3 {
   text-align: center;
 }
 
+#main form button {
+  color: white;
+}
+
 #wrapper {
   display: flex;
 }
@@ -314,4 +318,12 @@ h3 {
 #researchQuality {
   flex: 1;
 
+}
+li a {
+  color: black;
+}
+
+#main p, #main h5 {
+  padding-left: 20px;
+  padding-right: 20px;
 }

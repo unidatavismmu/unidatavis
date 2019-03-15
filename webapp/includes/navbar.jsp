@@ -4,6 +4,7 @@
 		<ul style="padding-top:10px; padding-bottom:10px">
 
 			<li><a href="index.jsp">Home</a></li>
+			<li><a href="about.jsp">About</a></li>
 			<li><a href="universities.jsp">Universities</a></li>
 			<li><a href="courses.jsp">Courses</a></li>
 			<% if (Controller.loggedIn == false) { %>

@@ -33,7 +33,7 @@
 				<form action="university.jsp" method="POST">
 					<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
 					<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
-				  	<button type="submit"><%out.println(uniName);%></button>
+				  	<button class="btn btn-primary" type="submit"><%out.println(uniName);%></button>
 			  	</form>
 		<%
 			}

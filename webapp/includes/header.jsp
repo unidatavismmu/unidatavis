@@ -35,7 +35,7 @@
 			      <label for="password"><b>Password</b></label>
 			      <input type="password" placeholder="Enter Password" name="password" required>
 
-      			  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+      			  <p>By creating an account you agree to our <a href="about.jsp" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       				<div class="clearfix">
         				<button type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
