@@ -226,6 +226,90 @@ public class DAO {
 		}
 		return userName;
 	}
+	
+	public float getStudentSatisfaction(String uniName, String courseName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM '" + courseName + "' WHERE \"University Name\" = '"+uniName+"'";
+		System.out.println(query);
+		
+		float studentSatisfaction = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				studentSatisfaction = rs.getFloat("Student Satisfaction");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return studentSatisfaction;
+	 }
+	
+	public float getResearchQuality(String uniName, String courseName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM '" + courseName + "' WHERE \"University Name\" = '"+uniName+"'";
+		System.out.println(query);
+		
+		float researchQuality = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				researchQuality = rs.getFloat("Research Quality");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return researchQuality;
+	 }
 
 
 	/**

@@ -1,50 +1,25 @@
-<%@ page import="controller.Controller,java.util.ArrayList,models.University,java.util.Map,java.util.HashMap,java.util.List" %>
-<%@ page import="com.google.gson.Gson"%>
-<%@ page import="com.google.gson.JsonObject"%>
- 
-<%
-Gson gsonObj = new Gson();
-Map<Object,Object> map = null;
-List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
- 
-map = new HashMap<Object,Object>(); map.put("x", 10); map.put("y", 31); list.add(map);
-map = new HashMap<Object,Object>(); map.put("x", 20); map.put("y", 65); list.add(map);
-map = new HashMap<Object,Object>(); map.put("x", 30); map.put("y", 40); list.add(map);
-map = new HashMap<Object,Object>(); map.put("x", 40); map.put("y", 84); list.add(map);
-map = new HashMap<Object,Object>(); map.put("x", 50); map.put("y", 68); list.add(map);
+<%@ page import="controller.Controller,java.util.ArrayList,models.University,java.util.Map,java.util.HashMap,java.util.List,com.google.gson.Gson,com.google.gson.JsonObject,models.DAO" %>
 
- 
-String dataPoints = gsonObj.toJson(list);
+<%
+	String uniName = request.getParameter("uniName");
+	String courseName = request.getParameter("courseName");
+
+	DAO dao = new DAO();
+	float studentSatisfaction = dao.getStudentSatisfaction(uniName.replaceAll("\\s+$", ""),courseName.replaceAll("\\s+$", ""));
+	System.out.println("Student satisfaction: " + studentSatisfaction);
+	float researchQuality = dao.getResearchQuality(uniName.replaceAll("\\s+$", ""),courseName.replaceAll("\\s+$", ""));
+	System.out.println("Research Quality: " + researchQuality);
+
 %>
+
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
-	<title>Title</title>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<title><% out.println(courseName + " at " + uniName + " - Unidata"); %></title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+  	<link href="css/bootstrap.css" rel="stylesheet">
+  	<link href="css/mdb.css" rel="stylesheet">
 
-
-
-<script type="text/javascript">
-	window.onload = function() { 
-	 
-	var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		exportEnabled: true,
-		title: {
-			text: "Simple Column Chart with Index Labels"
-		},
-		data: [{
-			type: "column",
-			indexLabelFontColor: "#5A5757",
-			indexLabelPlacement: "outside",
-			dataPoints: <%out.print(dataPoints);%>
-		}]
-	});
-	chart.render();
-	 
-	}
-</script>
 </head>
 
 <body>
@@ -53,28 +28,83 @@ String dataPoints = gsonObj.toJson(list);
 	<%@include  file="includes/header.jsp" %>
 	<%@include  file="includes/navbar.jsp" %>
 
-
 	<!-- Main body -->
-	<main>
-		<%
-			String uniName = request.getParameter("uniName");
-			String courseName = request.getParameter("courseName");
-
-		%>
-		<h1><%out.println(courseName + " at " + uniName);%></h1>
+	<div id="main">
 
 		<br>
+		<center><h2 id="black"><%out.println(courseName + " at " + uniName);%></h2></center>
 
-		<h2>Statistics:</h2>
+		<br>
+		<div id="wrapper">
 
-		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-	</main>
+		<div id="studentSatisfaction">
+			<h4 style="padding-left:75px;">Student Satisfaction</h4>
 
-	<!-- Footer containing references and about information -- >
-	<footer>
-		<p>References go here</p>
-	</footer>
+			<canvas id="studentSatisfactionChart" style="max-width: 500px;"></canvas>
+
+			<p><%out.println(studentSatisfaction + "/5 students are satisfied with " + courseName + " at " + uniName);%></p>
+		</div>
+
+		<div id="researchQuality">
+			<h4 style="padding-left:75px;">Research Quality</h4>
+
+			<canvas id="researchQualityChart" style="max-width: 500px;"></canvas>
+
+			<p><%out.println("Research Quality for " + courseName + " at " + uniName + " is rated " + researchQuality + "/4.");%></p>
+
+		</div>
+		</div>
+
+		
+	</div>
+
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.js"></script>
+
+  <script>
+  var ctx = document.getElementById("studentSatisfactionChart").getContext('2d');
+  var studentSatisfactionChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        label: 'Student Satisfaction',
+        data: [<% out.println(studentSatisfaction); %>,<% out.println(5-studentSatisfaction); %>],
+        backgroundColor: [
+          'rgba(119, 255, 51, 0.2)',
+          'rgba(255, 99, 132, 0.2)'
+        ],
+        borderColor: [
+          'rgba(119, 255, 51, 1)',
+          'rgba(255,99,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    }
+  });
+
+  var ctx = document.getElementById("researchQualityChart").getContext('2d');
+  var researchQualityChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        label: 'Research Quality',
+        data: [<% out.println(researchQuality); %>,<% out.println(4-researchQuality); %>],
+        backgroundColor: [
+          'rgba(119, 255, 51, 0.2)',
+          'rgba(255, 99, 132, 0.2)'
+        ],
+        borderColor: [
+          'rgba(119, 255, 51, 1)',
+          'rgba(255,99,132,1)'
+        ],
+        borderWidth: 1
+      }]
+    }
+  });
+
+</script>
 
 </body>
 </html>
