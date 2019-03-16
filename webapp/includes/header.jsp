@@ -38,8 +38,8 @@
       			  <p>By creating an account you agree to our <a href="about.jsp" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       				<div class="clearfix">
-        				<button type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
-       					<button type="submit" class="registerButton">Register</button>
+       					<button class="btn btn-success" type="submit" class="registerButton">Register</button>
+       					<button class="btn btn-danger" type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
       				</div>
     			</div>
   			</form>
@@ -60,8 +60,8 @@
 				    <input type="password" placeholder="Enter Password" name="password" required>
 				    
 				<div class="clearfix">    
-				    <button type="submit">Login</button>
-				    <button type="button" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+				    <button class="btn btn-success" type="submit">Login</button>
+				    <button class="btn btn-danger" type="button" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
     			</div>
 
     			</div>
