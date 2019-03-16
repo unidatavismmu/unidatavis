@@ -46,9 +46,11 @@
 		<div class="wrapper">
 
 		<div id="studentSatisfaction">
-			<h4 style="padding-left:75px;">Student Satisfaction</h4>
+			<h4>Student Satisfaction</h4>
 
 			<canvas id="studentSatisfactionChart" style="max-width: 500px;"></canvas>
+
+      <br>
 
 			<p><%out.println(studentSatisfaction + "/5 students are satisfied with " + courseName + " at " + uniName);%></p>
 		</div>
@@ -57,6 +59,8 @@
 			<h4 style="padding-left:75px;">Research Quality</h4>
 
 			<canvas id="researchQualityChart" style="max-width: 500px;"></canvas>
+
+      <br>
 
 			<p><%out.println("Research Quality for " + courseName + " at " + uniName + " is rated " + researchQuality + "/4.");%></p>
 
@@ -67,13 +71,28 @@
     
     <div class="wrapper">
       <div id="entryStandards">
-        <h4 style="padding-left:75px;">Entry Standards</h4>
+        <h4>Entry Standards</h4>
 
         <canvas id="entryStandardsChart" style="max-width: 500px;"></canvas>
+        
+        <br>
+
+        <%
+          String higherOrLower;
+          if (avgEntryStandards > entryStandards) {
+            higherOrLower = "lower";
+          } else {
+            higherOrLower = "higher";
+          }
+        %>
+
+        <p><%out.println(uniName + " has " + higherOrLower + " entry standards than the average " + courseName + " course.");%></p>
+ 
       </div>
     </div>
 
-		
+    <br>
+
 	</div>
 
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
@@ -126,9 +145,9 @@
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["Average", ""],
+      labels: ["Average", "This Course"],
       datasets: [{
-        label: 'Entry Standards',
+        label: 'UCAS Points',
         data: [<% out.println(avgEntryStandards); %>,<% out.println(entryStandards); %>],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

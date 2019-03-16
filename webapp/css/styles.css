@@ -306,6 +306,7 @@ h3 {
 
 .wrapper {
   display: flex;
+  padding-left: 70px;
 }
 .member {
   flex: 1;
@@ -313,6 +314,10 @@ h3 {
 #studentSatisfaction {
   flex: 1;
 }
+#studentSatisfaction h4 {
+  padding-left: 150px;
+}
+
 #researchQuality {
   flex: 1;
 
