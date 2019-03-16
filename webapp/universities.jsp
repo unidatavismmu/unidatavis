@@ -27,7 +27,6 @@
 			for (University u : uniList) {
 				uniName = u.getUniversity_name();
 				uniID = u.getUniversity_id();
-				System.out.println(uniID);
 
 		%>
 				<form action="university.jsp" method="POST">
