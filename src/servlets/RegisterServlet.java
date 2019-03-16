@@ -39,23 +39,40 @@ public class RegisterServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			DAO dao = new DAO();
-
 			ArrayList<String> errors = new ArrayList<String>();
 			HashMap<String, String> values = new HashMap<String, String>();
+			ArrayList<String> usernames = new ArrayList<String>();
+			try {
+				usernames = dao.getAllUsernames();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			String emailAddress = request.getParameter("emailAddress");
-
+						
+			for(int i=0;i<usernames.size()-1;i++) {
+				if (usernames.get(i).equals(username)) {
+					System.out.println("Username already exists");
+					response.sendRedirect("/error.jsp");
+					return;
+				}
+			}
+			
+			if (password.length() <= 3) {
+				System.out.println("Password too short");
+				response.sendRedirect("/error.jsp");
+				return;
+			}
 
 			values.put("username", username);
 			values.put("password", password);
 			values.put("firstName", firstName);
 			values.put("lastName", lastName);
 			values.put("emailAddress", emailAddress);
-
 
 			if (username.isEmpty()) {
 				errors.add("username");
@@ -80,7 +97,7 @@ public class RegisterServlet extends HttpServlet {
 				response.sendRedirect("/error.jsp");
 				doGet(request, response);
 			} else {
-				boolean created;
+				boolean created = false;
 				try {
 					created = dao.insertUser(username,password,firstName,lastName,emailAddress);
 					created = true;
@@ -91,7 +108,7 @@ public class RegisterServlet extends HttpServlet {
 
 				if (created) {
 					System.out.println("Registration Success: " + username);
-					response.sendRedirect("../");
+					response.sendRedirect("/index.jsp");
 				} else {
 					System.out.println("Registration Failed: " + username);
 					response.sendRedirect("/error.jsp");
