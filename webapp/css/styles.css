@@ -85,7 +85,8 @@ nav li a {
 
 body
 {
-	background-image: url("../images/university_marketing3.jpg");
+	background-image: url("../images/home_image.jpg");
+  background-size: 100%;
 	position: center;
 }
 

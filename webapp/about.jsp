@@ -78,6 +78,9 @@
 		<li>And many more.</li>
 		</ol>
 
+		<p>Website design: Bootstrap, Bootstrap Material Design (Graphs) - Open source libraries</p>
+		<p>Image Credit: <a href="https://mss.mpsd.ca/Students/Promotion%20Policy/Pages/default.aspx">mss.mpsd.ca</a>
+
 		<hr>
 		<center><h4>TERMS AND CONDITIONS</h4></center>
 		<hr>
