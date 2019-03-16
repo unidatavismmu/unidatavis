@@ -70,7 +70,7 @@
 			%>
 				<form action="course.jsp" method="POST">
 					<input type="hidden" name="courseName" value="<%out.println(courseName);%>"/>
-				  	<button type="submit">
+				  	<button class="btn btn-primary" type="submit">
 				  		<%
 						if (courseList.size() == 0) {
 							out.println("No courses found.");

@@ -44,14 +44,9 @@
 			<%
 				}
 			%>
-			
+		<br>	
 
 	</div>
-
-	<!-- Footer containing references and about information -- >
-	<footer>
-		<p>References go here</p>
-	</footer>
 
 </body>
 </html>

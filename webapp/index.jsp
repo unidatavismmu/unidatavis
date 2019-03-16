@@ -20,14 +20,12 @@
 			
 		<div class="searchForm" >
 		
-			<li>
 				<form action="/results.jsp">
 
 					<input type="text" placeholder="Type here..." name="searchQuery">
-					<input type="submit" value="Search">
+					<input class="btn btn-primary" type="submit" value="Search">
 
 				</form>
-			</li>
 		
 		</div>
 			
