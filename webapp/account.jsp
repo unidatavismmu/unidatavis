@@ -33,6 +33,28 @@
 		<br><hr><br>
 		<center><h2>Saved Universities</h2></center>
 
+		<%
+ 			ArrayList<String> unis = new ArrayList<String>();
+ 			HttpSession session = request.getSession();
+ 			String username = session.getAttribute("username").toString();
+ 			unis = dao.getAllSavedUnis(username);
+
+ 			for (String s : unis) {
+				uniName = u.getUniversity_name();
+				uniID = u.getUniversity_id();
+
+		%>
+				<form action="university.jsp" method="POST">
+					<input type="hidden" name="uniID" value="<%out.println(uniID);%>"/>
+					<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
+				  	<button class="btn btn-primary" type="submit"><%out.println(uniName);%></button>
+			  	</form>
+		<%
+			}
+		%>
+
+		%>
+
 		<br><hr><br>
 
 		<center><h2>Update Account</h2></center>

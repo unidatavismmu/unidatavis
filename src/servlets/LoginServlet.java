@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loggedin", true);
 			session.setAttribute("username", user);
 			Controller.loggedIn = true;
-			response.sendRedirect("../");
+			response.sendRedirect("/index.jsp");
 		} else {
 			response.sendRedirect("/error.jsp");
 			System.out.println("Failed to login: " + uname);

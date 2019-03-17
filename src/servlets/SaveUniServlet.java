@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.Controller;
 import models.DAO;
 
 public class SaveUniServlet extends HttpServlet {
@@ -24,16 +25,26 @@ public class SaveUniServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uniName = request.getParameter("uniName");
-		DAO dao = new DAO();
-		HttpSession session = request.getSession();
-		String username = session.getAttribute("username").toString();
-		System.out.println(username + uniName);
-		try {
-			dao.saveUni(username, uniName);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if (Controller.loggedIn == true) {
+			String uniName = request.getParameter("uniName");
+			uniName = uniName.replaceAll("\\s+$", "");
+			System.out.println("Saving: " + uniName);
+			
+			DAO dao = new DAO();
+			HttpSession session = request.getSession();
+			
+			String username = session.getAttribute("username").toString();
+			System.out.println("Username: " + username);
+			
+			try {
+				dao.saveUni(username, uniName);
+				response.sendRedirect("/index.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("Not logged in");
+			response.sendRedirect("/error.jsp");
 		}
-
 	}
 }

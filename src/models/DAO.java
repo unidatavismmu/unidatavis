@@ -550,6 +550,48 @@ public class DAO {
 		return usernames;
 	 }
 	
+	public ArrayList<String> getAllSavedUnis(String username) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM SavedUnis WHERE username='"+username+"'";
+		System.out.println(query);
+		
+		// Define array list to store all universities.
+		ArrayList<String> unis = new ArrayList<String>();
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				unis.add(rs.getString("uniName"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+		// Returns final list of university objects.
+		return unis;
+	 }
+	
 	
 	/**
 	 * Method for returning all universities using a university name as a condition.

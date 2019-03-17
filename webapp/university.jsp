@@ -42,10 +42,12 @@
 		
 		<p><% out.println(description);%></p>
 
-	    <form method="post" action="/saveUni">
-	    	<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
-	      	<button class="btn btn-primary" type="submit">Save</button>
-	    </form>
+		<% if (Controller.loggedIn == true) { %>
+		    <form method="post" action="/saveUni">
+		    	<input type="hidden" name="uniName" value="<%out.println(uniName);%>"/>
+		      	<button class="btn btn-primary" type="submit">Save</button>
+		    </form>
+	    <% } %>
 
 		<br><hr><br>
 
