@@ -226,6 +226,7 @@ public class DAO {
 			// Executes the update and returns true if there are any rows in the database (data has been inserted).
 			int rs = ps.executeUpdate();
 			if (rs != 0) {
+				System.out.println("Uni saved: " + username + " " + uniName);
 				return true;
 			}
 			
@@ -323,6 +324,90 @@ public class DAO {
 
 		// Returns final list of university objects.
 		return studentSatisfaction;
+	 }
+	
+	public float getDegreeCompletion(String uniName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM Universities WHERE \"University Name\" = '"+uniName+"'";
+		System.out.println(query);
+		
+		float degreeCompletion = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				degreeCompletion = rs.getFloat("Degree Completion");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return degreeCompletion;
+	 }
+	
+	public float getGoodHonours(String uniName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM Universities WHERE \"University Name\" = '"+uniName+"'";
+		System.out.println(query);
+		
+		float goodHonours = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			while(rs.next()) {	
+				goodHonours = rs.getFloat("Good Honours");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+
+		// Returns final list of university objects.
+		return goodHonours;
 	 }
 	
 	public float getEntryStandards(String uniName, String courseName) throws SQLException {
@@ -548,6 +633,47 @@ public class DAO {
 		}
 		// Returns final list of university objects.
 		return usernames;
+	 }
+	
+	public int getUniID(String uniName) throws SQLException {
+		// Define connection, statement and result set variables to be used later.
+		Connection c = null;
+		Statement s = null;
+		ResultSet rs = null;
+		
+		// Query to be run. Printed for debugging.
+		String query = "SELECT * FROM Universities WHERE \"University Name\"='"+uniName+"'";
+		System.out.println(query);
+		int uniID = 0;
+		
+		try {
+			// Gets the connection and executes the query using the string above.
+			c = getConnection();
+			s = c.createStatement();
+			rs = s.executeQuery(query);
+			
+			// Loops through all rows in the result set and creates a new university object with all the data.
+			if(rs.next()) {	
+				uniID = rs.getInt("University ID");
+				System.out.println("UniID returned: " + uniID);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+				
+		} finally {
+			// Closes result set, statement and connection.
+			if (rs != null) {
+				rs.close();
+			}
+			if (s != null) {
+				s.close();
+			}
+			if (c != null) {
+				c.close();
+			}
+		}
+		// Returns final list of university objects.
+		return uniID;
 	 }
 	
 	public ArrayList<String> getAllSavedUnis(String username) throws SQLException {

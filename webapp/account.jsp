@@ -1,8 +1,8 @@
-<%@ page import="controller.Controller,java.util.ArrayList,models.University" %>
+<%@ page import="models.DAO,controller.Controller,java.util.ArrayList,models.University" %>
 <html>
 <head>
 	<!-- Head defines title and links to CSS -->
-	<title>Unidata - Account</title>
+	<title>Account - Unidata</title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 
@@ -34,14 +34,16 @@
 		<center><h2>Saved Universities</h2></center>
 
 		<%
+			DAO dao = new DAO();
  			ArrayList<String> unis = new ArrayList<String>();
- 			HttpSession session = request.getSession();
  			String username = session.getAttribute("username").toString();
  			unis = dao.getAllSavedUnis(username);
+ 			String uniName;
+ 			int uniID;
 
- 			for (String s : unis) {
-				uniName = u.getUniversity_name();
-				uniID = u.getUniversity_id();
+ 			for (int i=0;i<unis.size();i++) {
+				uniName = unis.get(i);
+				uniID = dao.getUniID(uniName);
 
 		%>
 				<form action="university.jsp" method="POST">
@@ -53,7 +55,6 @@
 			}
 		%>
 
-		%>
 
 		<br><hr><br>
 
@@ -79,22 +80,7 @@
 
 		<br><hr><br>
 
-
-			
-
 	</div>
-
-	<!-- Aside with account details -->
-	<article>
-		<h1>Username</h1>
-		<a href="accountInfo">Account Info</a>
-		<a href="savedUnis">Saved Unis</a>
-	</article>
-
-	<!-- Footer containing references and about information -- >
-	<footer>
-		<p>References go here</p>
-	</footer>
 
 </body>
 </html>

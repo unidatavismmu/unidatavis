@@ -326,6 +326,14 @@ h3 {
   flex: 1;
 
 }
+#degreeCompletion {
+  flex: 1;
+
+}
+#goodHonours {
+  flex: 1;
+
+}
 li a {
   color: black;
 }

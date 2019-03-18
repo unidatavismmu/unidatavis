@@ -69,9 +69,8 @@
 
     <br><hr><br>
     
-    <div class="wrapper">
-      <div id="entryStandards">
-        <h4>Entry Standards</h4>
+      <center><div id="entryStandards">
+        <center><h4>Entry Standards</h4></center>
 
         <canvas id="entryStandardsChart" style="max-width: 500px;"></canvas>
         
@@ -88,8 +87,7 @@
 
         <p><%out.println(uniName + " has " + higherOrLower + " entry standards than the average " + courseName + " course.");%></p>
  
-      </div>
-    </div>
+      </div></center>
 
     <br>
 
