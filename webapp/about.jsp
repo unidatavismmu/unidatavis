@@ -28,32 +28,32 @@
 	<center>
 	<div class="wrapper">
 		<div class="member">
-			<img src="images/download.png" width="100px" height="100px"/>
+			<img src="images/Cath.jpg" width="100px" height="120px"/>
 			<h6>Catherine Watson</h6>
 			<p>Project Manager</p>
 		</div>
 		<div class="member">
-			<img src="images/download.png" width="100px" height="100px"/>
+			<img src="images/Jake.jpg" width="100px" height="120px"/>
 			<h6>Jake Taylor</h6>
 			<p>Tech Lead</p>
 		</div>
 		<div class="member">
-			<img src="images/download.png" width="100px" height="100px"/>
+			<img src="images/Andy.jpg" width="100px" height="120px"/>
 			<h6>Andrew Watts</h6>
 			<p>Client Advocate</p>
 		</div>
 		<div class="member">
-			<img src="images/download.png" width="100px" height="100px"/>
+			<img src="images/Tasneem.jpg" width="100px" height="120px"/>
 			<h6>Tasneem Tasneem</h6>
 			<p>Client Advocate</p>
 		</div>
 		<div class="member">
-			<img src="images/download.png" width="100px" height="100px"/>
+			<img src="images/Muhammed.jpg" width="100px" height="120px"/>
 			<h6>Muhammad Waleed</h6>
 			<p>User Advocate</p>
 		</div>
 		<div class="member">
-			<img src="images/download.png" width="100px" height="100px"/>
+			<img src="images/Bilal.jpg" width="100px" height="120px"/>
 			<h6>Bilal Khan</h6>
 			<p>User Advocate</p>
 		</div>
