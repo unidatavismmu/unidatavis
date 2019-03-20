@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 			Controller.loggedIn = true;
 			response.sendRedirect("/index.jsp");
 		} else {
-			response.sendRedirect("/error.jsp");
+			response.sendRedirect("/error/incorrectpassword.jsp");
 			System.out.println("Failed to login: " + uname);
 			HttpSession session = request.getSession();
 			session.setAttribute("error", "invalid credentials");

@@ -57,14 +57,14 @@ public class RegisterServlet extends HttpServlet {
 			for(int i=0;i<usernames.size()-1;i++) {
 				if (usernames.get(i).equals(username)) {
 					System.out.println("Username already exists");
-					response.sendRedirect("/error.jsp");
+					response.sendRedirect("/error/duplicateusername.jsp");
 					return;
 				}
 			}
 			
 			if (password.length() <= 3) {
 				System.out.println("Password too short");
-				response.sendRedirect("/error.jsp");
+				response.sendRedirect("/error/passwordtooshort.jsp");
 				return;
 			}
 
